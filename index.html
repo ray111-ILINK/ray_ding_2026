@@ -7,381 +7,209 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&family=DM+Serif+Display:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --navy: #0f2340;
-    --blue: #1a5fb4;
-    --blue-light: #3584e4;
-    --accent: #00b4d8;
-    --accent2: #f77f00;
-    --gray-900: #1c1c1e;
-    --gray-700: #3a3a3c;
-    --gray-500: #636366;
-    --gray-300: #c7c7cc;
-    --gray-100: #f2f2f7;
-    --white: #ffffff;
-    --surface: #fafbfc;
-  }
+:root {
+  --navy: #0f2340; --blue: #1a5fb4; --blue-light: #3584e4; --accent: #00b4d8;
+  --gray-900: #1c1c1e; --gray-700: #3a3a3c; --gray-500: #636366;
+  --gray-300: #c7c7cc; --gray-100: #f2f2f7; --white: #fff; --surface: #fafbfc;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { font-family:'Noto Sans TC',sans-serif; background:var(--white); color:var(--gray-900); line-height:1.7; font-size:16px; }
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+/* NAV */
+nav { position:fixed; top:0; left:0; right:0; z-index:100; background:rgba(255,255,255,0.94); backdrop-filter:blur(12px); border-bottom:1px solid rgba(0,0,0,0.08); padding:0 48px; display:flex; align-items:center; justify-content:space-between; height:64px; }
+.nav-brand { font-family:'DM Serif Display',serif; font-size:22px; color:var(--navy); }
+.nav-brand span { color:var(--blue); }
+.nav-links { display:flex; gap:28px; list-style:none; }
+.nav-links a { text-decoration:none; color:var(--gray-700); font-size:13px; font-weight:500; transition:color 0.2s; }
+.nav-links a:hover { color:var(--blue); }
 
-  html { scroll-behavior: smooth; }
+/* HERO */
+.hero { min-height:100vh; display:grid; grid-template-columns:55% 45%; padding-top:64px; overflow:hidden; }
+.hero-left { padding:72px 56px 72px 80px; display:flex; flex-direction:column; justify-content:center; animation:fadeUp 0.8s ease both; }
+.hero-badge { display:inline-flex; align-items:center; gap:8px; background:#e8f4fd; color:var(--blue); padding:7px 16px; border-radius:100px; font-size:13px; font-weight:500; margin-bottom:28px; width:fit-content; }
+.hero-badge::before { content:''; width:7px; height:7px; border-radius:50%; background:var(--accent); display:block; animation:pulse 2s ease infinite; }
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(1.5)} }
+.hero-name { font-family:'DM Serif Display',serif; font-size:clamp(52px,6vw,84px); line-height:1.05; color:var(--navy); margin-bottom:8px; }
+.hero-name-en { font-family:'JetBrains Mono',monospace; font-size:20px; color:var(--blue-light); font-weight:400; letter-spacing:0.1em; margin-bottom:28px; }
+.hero-tagline { font-size:17px; color:var(--gray-700); line-height:1.85; max-width:460px; margin-bottom:36px; }
+.hero-tagline strong { color:var(--navy); font-weight:700; }
+.hero-tags { display:flex; flex-wrap:wrap; gap:9px; margin-bottom:44px; }
+.tag { padding:7px 15px; border-radius:6px; font-size:13px; font-weight:500; background:var(--gray-100); color:var(--gray-700); border:1px solid var(--gray-300); transition:all 0.2s; cursor:default; }
+.tag:hover { background:var(--navy); color:white; border-color:var(--navy); }
+.hero-cta { display:flex; gap:14px; align-items:center; }
+.btn-primary { padding:14px 30px; border-radius:8px; background:var(--navy); color:white; font-size:15px; font-weight:500; text-decoration:none; border:2px solid var(--navy); transition:all 0.2s; }
+.btn-primary:hover { background:var(--blue); border-color:var(--blue); transform:translateY(-2px); }
+.btn-outline { padding:14px 30px; border-radius:8px; background:transparent; color:var(--navy); font-size:15px; font-weight:500; text-decoration:none; border:2px solid var(--gray-300); transition:all 0.2s; }
+.btn-outline:hover { border-color:var(--navy); }
 
-  body {
-    font-family: 'Noto Sans TC', sans-serif;
-    background: var(--white);
-    color: var(--gray-900);
-    line-height: 1.7;
-    font-size: 15px;
-  }
+/* HERO RIGHT */
+.hero-right { background:linear-gradient(140deg,#0f2340 0%,#1a5fb4 55%,#00b4d8 100%); display:flex; flex-direction:column; justify-content:center; align-items:center; padding:64px 48px; position:relative; overflow:hidden; gap:24px; }
+.hero-right::before { content:''; position:absolute; top:-80px; right:-80px; width:300px; height:300px; border-radius:50%; background:rgba(255,255,255,0.05); }
+.hero-right::after { content:''; position:absolute; bottom:-60px; left:-60px; width:200px; height:200px; border-radius:50%; background:rgba(0,180,216,0.12); }
 
-  /* NAV */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    background: rgba(255,255,255,0.92);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(0,0,0,0.08);
-    padding: 0 40px;
-    display: flex; align-items: center; justify-content: space-between;
-    height: 60px;
-  }
-  .nav-brand {
-    font-family: 'DM Serif Display', serif;
-    font-size: 20px; color: var(--navy);
-    letter-spacing: 0.02em;
-  }
-  .nav-brand span { color: var(--blue); }
-  .nav-links { display: flex; gap: 32px; list-style: none; }
-  .nav-links a {
-    text-decoration: none; color: var(--gray-700);
-    font-size: 13px; font-weight: 500; letter-spacing: 0.04em;
-    transition: color 0.2s;
-  }
-  .nav-links a:hover { color: var(--blue); }
+/* 照片 */
+.hero-photo { z-index:1; width:130px; height:130px; border-radius:50%; border:4px solid rgba(255,255,255,0.4); overflow:hidden; box-shadow:0 8px 32px rgba(0,0,0,0.3); background:rgba(255,255,255,0.1); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+.hero-photo img { width:100%; height:100%; object-fit:cover; object-position:center top; }
+.hero-photo-fallback { font-size:40px; }
 
-  /* HERO */
-  .hero {
-    min-height: 100vh;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding-top: 60px;
-    overflow: hidden;
-  }
-  .hero-left {
-    padding: 80px 60px 80px 80px;
-    display: flex; flex-direction: column; justify-content: center;
-    animation: fadeUp 0.8s ease both;
-  }
-  .hero-badge {
-    display: inline-flex; align-items: center; gap: 8px;
-    background: #e8f4fd; color: var(--blue);
-    padding: 6px 14px; border-radius: 100px;
-    font-size: 12px; font-weight: 500; letter-spacing: 0.06em;
-    margin-bottom: 28px; width: fit-content;
-  }
-  .hero-badge::before {
-    content: ''; width: 6px; height: 6px; border-radius: 50%;
-    background: var(--accent); display: block;
-    animation: pulse 2s ease infinite;
-  }
-  @keyframes pulse {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.5; transform: scale(1.4); }
-  }
-  .hero-name {
-    font-family: 'DM Serif Display', serif;
-    font-size: clamp(48px, 6vw, 80px);
-    line-height: 1.05;
-    color: var(--navy);
-    margin-bottom: 8px;
-  }
-  .hero-name-en {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 18px; color: var(--blue-light);
-    font-weight: 400; letter-spacing: 0.08em;
-    margin-bottom: 28px;
-  }
-  .hero-tagline {
-    font-size: 17px; color: var(--gray-700); font-weight: 300;
-    line-height: 1.8; max-width: 420px; margin-bottom: 40px;
-  }
-  .hero-tagline strong { color: var(--navy); font-weight: 700; }
+/* Stats */
+.stat-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; width:100%; max-width:330px; z-index:1; }
+.stat-card { background:rgba(255,255,255,0.1); backdrop-filter:blur(10px); border:1px solid rgba(255,255,255,0.2); border-radius:14px; padding:18px 20px; transition:transform 0.2s; }
+.stat-card:hover { transform:translateY(-3px); }
+.stat-number { font-family:'DM Serif Display',serif; font-size:34px; color:white; line-height:1; margin-bottom:4px; }
+.stat-number span { font-size:16px; color:var(--accent); }
+.stat-label { font-size:11px; color:rgba(255,255,255,0.7); letter-spacing:0.05em; font-weight:500; }
+.hero-quote { max-width:310px; z-index:1; padding:16px 20px; background:rgba(255,255,255,0.08); border-left:3px solid var(--accent); border-radius:0 10px 10px 0; }
+.hero-quote p { color:rgba(255,255,255,0.85); font-size:13px; line-height:1.75; font-style:italic; }
 
-  .hero-tags {
-    display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 44px;
-  }
-  .tag {
-    padding: 6px 14px; border-radius: 6px;
-    font-size: 12px; font-weight: 500;
-    background: var(--gray-100); color: var(--gray-700);
-    border: 1px solid var(--gray-300);
-    transition: all 0.2s;
-  }
-  .tag:hover { background: var(--navy); color: white; border-color: var(--navy); }
+/* SECTIONS */
+section { padding:96px 80px; }
+.section-label { font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:0.15em; color:var(--blue); text-transform:uppercase; margin-bottom:12px; display:flex; align-items:center; gap:10px; }
+.section-label::after { content:''; flex:1; max-width:40px; height:1px; background:var(--blue); }
+.section-title { font-family:'DM Serif Display',serif; font-size:clamp(32px,4vw,48px); color:var(--navy); line-height:1.15; margin-bottom:14px; }
+.section-sub { color:var(--gray-500); font-size:16px; max-width:520px; line-height:1.75; margin-bottom:56px; }
 
-  .hero-cta { display: flex; gap: 14px; align-items: center; }
-  .btn-primary {
-    padding: 13px 28px; border-radius: 8px;
-    background: var(--navy); color: white;
-    font-size: 14px; font-weight: 500; letter-spacing: 0.04em;
-    text-decoration: none; border: 2px solid var(--navy);
-    transition: all 0.2s;
-  }
-  .btn-primary:hover { background: var(--blue); border-color: var(--blue); transform: translateY(-1px); }
-  .btn-outline {
-    padding: 13px 28px; border-radius: 8px;
-    background: transparent; color: var(--navy);
-    font-size: 14px; font-weight: 500; letter-spacing: 0.04em;
-    text-decoration: none; border: 2px solid var(--gray-300);
-    transition: all 0.2s;
-  }
-  .btn-outline:hover { border-color: var(--navy); }
+/* STRENGTHS */
+#strengths { background:var(--surface); }
+.strength-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }
+.strength-card { background:white; border-radius:16px; padding:30px; border:1px solid #e8edf3; transition:all 0.25s; position:relative; overflow:hidden; }
+.strength-card::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(90deg,var(--blue),var(--accent)); transform:scaleX(0); transform-origin:left; transition:transform 0.3s; }
+.strength-card:hover::before { transform:scaleX(1); }
+.strength-card:hover { transform:translateY(-4px); box-shadow:0 20px 40px rgba(0,0,0,0.08); }
+.strength-icon { font-size:32px; margin-bottom:14px; display:block; }
+.strength-title { font-size:16px; font-weight:700; color:var(--navy); margin-bottom:10px; }
+.strength-desc { font-size:14px; color:var(--gray-500); line-height:1.8; }
 
-  .hero-right {
-    background: linear-gradient(135deg, #0f2340 0%, #1a5fb4 60%, #00b4d8 100%);
-    display: flex; flex-direction: column; justify-content: center; align-items: center;
-    padding: 80px 60px;
-    position: relative; overflow: hidden;
-    animation: fadeIn 1s ease 0.3s both;
-  }
-  .hero-right::before {
-    content: '';
-    position: absolute; top: -80px; right: -80px;
-    width: 300px; height: 300px; border-radius: 50%;
-    background: rgba(255,255,255,0.05);
-  }
-  .hero-right::after {
-    content: '';
-    position: absolute; bottom: -60px; left: -60px;
-    width: 200px; height: 200px; border-radius: 50%;
-    background: rgba(0,180,216,0.15);
-  }
+/* EXPERIENCE */
+#experience { background:white; }
+.timeline { position:relative; }
+.timeline::before { content:''; position:absolute; left:28px; top:8px; bottom:8px; width:2px; background:linear-gradient(to bottom,var(--blue),var(--accent)); }
+.exp-item { position:relative; padding-left:72px; margin-bottom:44px; }
+.exp-dot { position:absolute; left:20px; top:22px; width:18px; height:18px; border-radius:50%; background:white; border:3px solid var(--blue); z-index:1; }
+.exp-content { background:var(--surface); border-radius:16px; padding:26px 30px; border:1px solid #e8edf3; transition:all 0.2s; }
+.exp-content:hover { border-color:var(--blue-light); box-shadow:0 8px 24px rgba(26,95,180,0.08); }
+.exp-logo { height:32px; width:auto; max-width:120px; object-fit:contain; margin-bottom:8px; display:block; opacity:0.8; transition:opacity 0.2s; }
+.exp-content:hover .exp-logo { opacity:1; }
+.exp-logo-badge { display:inline-block; font-family:'JetBrains Mono',monospace; font-size:12px; font-weight:700; padding:3px 10px; border-radius:5px; margin-bottom:8px; letter-spacing:0.04em; }
+.badge-star { background:#1a5fb4; color:white; }
+.badge-synnex { background:#c0392b; color:white; }
+.badge-xinda { background:#003f87; color:white; }
+.exp-header { display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:10px; margin-bottom:14px; }
+.exp-company { font-size:12px; color:var(--blue); font-weight:600; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:4px; }
+.exp-role { font-size:19px; font-weight:700; color:var(--navy); }
+.exp-period { font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--gray-500); background:var(--gray-100); padding:5px 12px; border-radius:4px; white-space:nowrap; flex-shrink:0; }
+.achievement { display:flex; align-items:flex-start; gap:10px; padding:9px 0; border-bottom:1px solid #f0f0f5; font-size:14px; color:var(--gray-700); line-height:1.75; }
+.achievement:last-child { border:none; }
+.achievement::before { content:'▸'; color:var(--accent); flex-shrink:0; margin-top:3px; font-size:12px; }
+.exp-highlights { margin-top:14px; display:flex; flex-wrap:wrap; gap:7px; }
+.highlight-chip { font-size:12px; padding:4px 12px; border-radius:100px; background:#e8f4fd; color:var(--blue); font-weight:500; }
 
-  .stat-grid {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
-    width: 100%; max-width: 360px; z-index: 1;
-  }
-  .stat-card {
-    background: rgba(255,255,255,0.1);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255,255,255,0.2);
-    border-radius: 16px; padding: 24px;
-    transition: transform 0.2s;
-  }
-  .stat-card:hover { transform: translateY(-4px); }
-  .stat-number {
-    font-family: 'DM Serif Display', serif;
-    font-size: 42px; color: white; line-height: 1;
-    margin-bottom: 4px;
-  }
-  .stat-number span { font-size: 20px; color: var(--accent); }
-  .stat-label { font-size: 11px; color: rgba(255,255,255,0.7); letter-spacing: 0.06em; font-weight: 500; }
+/* ACTION PHOTOS */
+#action-photos { background:var(--navy); padding:96px 80px; }
+#action-photos .section-label { color:var(--accent); }
+#action-photos .section-label::after { background:var(--accent); }
+#action-photos .section-title { color:white; }
+#action-photos .section-sub { color:rgba(255,255,255,0.6); margin-bottom:48px; }
+.photo-showcase { display:grid; grid-template-columns:1.2fr 1fr; gap:24px; align-items:start; }
+.photo-main { border-radius:18px; overflow:hidden; position:relative; box-shadow:0 20px 60px rgba(0,0,0,0.4); background:rgba(255,255,255,0.06); min-height:280px; display:flex; align-items:center; justify-content:center; }
+.photo-main img { width:100%; height:100%; object-fit:cover; display:block; transition:transform 0.5s; }
+.photo-main:hover img { transform:scale(1.03); }
+.photo-fallback { color:rgba(255,255,255,0.3); font-size:14px; text-align:center; padding:60px 40px; }
+.photo-caption { position:absolute; bottom:0; left:0; right:0; padding:20px 24px; background:linear-gradient(to top,rgba(0,0,0,0.75),transparent); color:white; font-size:13px; line-height:1.5; }
+.photo-caption strong { display:block; font-size:15px; margin-bottom:3px; }
+.photo-side { display:flex; flex-direction:column; gap:18px; }
+.photo-block { background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.13); border-radius:14px; padding:24px 28px; }
+.quote-text { color:rgba(255,255,255,0.88); font-size:15px; line-height:1.85; font-style:italic; margin-bottom:20px; }
+.photo-stats-row { display:flex; gap:20px; }
+.photo-stat { text-align:center; }
+.photo-stat-num { font-family:'DM Serif Display',serif; font-size:28px; color:var(--accent); line-height:1; }
+.photo-stat-label { font-size:10px; color:rgba(255,255,255,0.5); margin-top:3px; }
+.client-label { color:rgba(255,255,255,0.55); font-size:11px; letter-spacing:0.08em; text-transform:uppercase; margin-bottom:12px; }
+.photo-chips { display:flex; flex-wrap:wrap; gap:7px; }
+.photo-chip { padding:5px 13px; border-radius:100px; font-size:12px; font-weight:500; background:rgba(0,180,216,0.18); color:var(--accent); border:1px solid rgba(0,180,216,0.28); }
 
-  .hero-quote {
-    margin-top: 32px; max-width: 340px; z-index: 1;
-    padding: 20px 24px;
-    background: rgba(255,255,255,0.08);
-    border-left: 3px solid var(--accent);
-    border-radius: 0 12px 12px 0;
-  }
-  .hero-quote p { color: rgba(255,255,255,0.85); font-size: 13px; line-height: 1.7; font-style: italic; }
+/* PROJECTS */
+#projects { background:var(--surface); }
+.project-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:22px; }
+.project-card { background:white; border-radius:16px; padding:30px; border:1px solid #e8edf3; transition:all 0.25s; }
+.project-card:hover { transform:translateY(-4px); box-shadow:0 20px 40px rgba(0,0,0,0.08); border-color:var(--blue-light); }
+.project-scale { display:inline-block; padding:5px 14px; border-radius:6px; font-family:'JetBrains Mono',monospace; font-size:14px; font-weight:500; background:linear-gradient(135deg,var(--navy),var(--blue)); color:white; margin-bottom:14px; }
+.project-title { font-size:17px; font-weight:700; color:var(--navy); margin-bottom:10px; }
+.project-desc { font-size:14px; color:var(--gray-500); line-height:1.8; margin-bottom:14px; }
+.project-role { font-size:13px; color:var(--blue); font-weight:600; }
 
-  /* SECTIONS */
-  section { padding: 100px 80px; }
-  .section-label {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px; letter-spacing: 0.15em; color: var(--blue);
-    text-transform: uppercase; margin-bottom: 12px;
-    display: flex; align-items: center; gap: 10px;
-  }
-  .section-label::after {
-    content: ''; flex: 1; max-width: 40px; height: 1px; background: var(--blue);
-  }
-  .section-title {
-    font-family: 'DM Serif Display', serif;
-    font-size: clamp(32px, 4vw, 48px); color: var(--navy);
-    line-height: 1.15; margin-bottom: 16px;
-  }
-  .section-sub { color: var(--gray-500); font-size: 15px; max-width: 480px; line-height: 1.7; margin-bottom: 60px; }
+/* SKILLS */
+#skills { background:white; }
+.skills-wrapper { display:grid; grid-template-columns:1fr 1fr; gap:56px; }
+.skill-group { margin-bottom:32px; }
+.skill-group-title { font-size:13px; font-weight:700; color:var(--navy); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:16px; padding-bottom:8px; border-bottom:2px solid var(--gray-100); }
+.skill-legend { display:flex; gap:16px; margin-bottom:20px; flex-wrap:wrap; }
+.legend-item { display:flex; align-items:center; gap:6px; font-size:12px; color:var(--gray-500); }
+.legend-dot { width:10px; height:10px; border-radius:3px; }
+.legend-dot.expert { background:var(--blue); }
+.legend-dot.proficient { background:#2a7a2a; }
+.legend-dot.familiar { background:#b35a00; }
+.skill-tags { display:flex; flex-wrap:wrap; gap:9px; }
+.skill-tag { padding:7px 15px; border-radius:7px; font-size:13px; font-weight:500; border:1.5px solid; transition:transform 0.2s; }
+.skill-tag:hover { transform:translateY(-2px); }
+.skill-tag.level-expert { background:#e8f4fd; color:var(--blue); border-color:#b3d4f5; }
+.skill-tag.level-proficient { background:#e8f5e8; color:#2a7a2a; border-color:#a8d8a8; }
+.skill-tag.level-familiar { background:#fef3e2; color:#b35a00; border-color:#f0c080; }
 
-  /* SKILLS */
-  #strengths { background: var(--surface); }
-  .strength-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-  .strength-card {
-    background: white; border-radius: 16px; padding: 32px;
-    border: 1px solid #e8edf3;
-    transition: all 0.25s;
-    position: relative; overflow: hidden;
-  }
-  .strength-card::before {
-    content: '';
-    position: absolute; top: 0; left: 0; right: 0; height: 3px;
-    background: linear-gradient(90deg, var(--blue), var(--accent));
-    transform: scaleX(0); transform-origin: left;
-    transition: transform 0.3s;
-  }
-  .strength-card:hover::before { transform: scaleX(1); }
-  .strength-card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0,0,0,0.08); }
-  .strength-icon {
-    font-size: 32px; margin-bottom: 16px; display: block;
-  }
-  .strength-title { font-size: 16px; font-weight: 700; color: var(--navy); margin-bottom: 10px; }
-  .strength-desc { font-size: 13px; color: var(--gray-500); line-height: 1.75; }
+/* LANGUAGE */
+.lang-item { margin-bottom:18px; }
+.lang-header { display:flex; justify-content:space-between; margin-bottom:7px; }
+.lang-name { font-size:15px; color:var(--gray-700); font-weight:500; }
+.lang-score { font-size:12px; color:var(--blue); font-family:'JetBrains Mono',monospace; }
+.lang-bar { height:8px; background:var(--gray-100); border-radius:100px; overflow:hidden; }
+.lang-fill { height:100%; border-radius:100px; background:linear-gradient(90deg,var(--blue),var(--accent)); width:0; transition:width 1.2s ease; }
 
-  /* EXPERIENCE */
-  #experience { background: white; }
-  .timeline { position: relative; }
-  .timeline::before {
-    content: ''; position: absolute; left: 20px; top: 0; bottom: 0;
-    width: 2px; background: linear-gradient(to bottom, var(--blue), var(--accent));
-  }
-  .exp-item {
-    display: grid; grid-template-columns: 60px 1fr; gap: 0;
-    margin-bottom: 48px; animation: fadeUp 0.5s ease both;
-  }
-  .exp-dot {
-    display: flex; justify-content: center; padding-top: 4px;
-    position: relative; z-index: 1;
-  }
-  .exp-dot-inner {
-    width: 16px; height: 16px; border-radius: 50%;
-    background: white; border: 3px solid var(--blue);
-    margin-left: -7px;
-  }
-  .exp-content {
-    background: var(--surface); border-radius: 16px; padding: 28px 32px;
-    border: 1px solid #e8edf3; margin-left: 8px;
-    transition: all 0.2s;
-  }
-  .exp-content:hover { border-color: var(--blue-light); box-shadow: 0 8px 24px rgba(26,95,180,0.08); }
-  .exp-header { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
-  .exp-company { font-size: 11px; color: var(--blue); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 4px; }
-  .exp-role { font-size: 18px; font-weight: 700; color: var(--navy); }
-  .exp-period {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px; color: var(--gray-500);
-    background: var(--gray-100); padding: 4px 10px; border-radius: 4px;
-  }
-  .exp-desc { color: var(--gray-700); font-size: 13.5px; line-height: 1.75; }
-  .exp-highlights { margin-top: 16px; display: flex; flex-wrap: wrap; gap: 8px; }
-  .highlight-chip {
-    font-size: 11px; padding: 4px 12px; border-radius: 100px;
-    background: #e8f4fd; color: var(--blue); font-weight: 500;
-  }
-  .exp-achievements { margin-top: 16px; }
-  .achievement {
-    display: flex; align-items: flex-start; gap: 10px;
-    padding: 10px 0; border-bottom: 1px solid #f0f0f5;
-    font-size: 13px; color: var(--gray-700);
-  }
-  .achievement:last-child { border: none; }
-  .achievement::before { content: '▸'; color: var(--accent); flex-shrink: 0; margin-top: 2px; }
+/* CERTS */
+.cert-list { display:flex; flex-direction:column; gap:10px; }
+.cert-item { display:flex; align-items:center; gap:14px; padding:14px 16px; background:var(--surface); border-radius:10px; border:1px solid #e8edf3; }
+.cert-icon { font-size:20px; flex-shrink:0; }
+.cert-name { font-weight:600; color:var(--navy); font-size:14px; }
+.cert-sub { font-size:12px; color:var(--gray-500); margin-top:1px; }
 
-  /* PROJECTS */
-  #projects { background: var(--surface); }
-  .project-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
-  .project-card {
-    background: white; border-radius: 16px; padding: 32px;
-    border: 1px solid #e8edf3;
-    transition: all 0.25s; cursor: default;
-  }
-  .project-card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0,0,0,0.08); border-color: var(--blue-light); }
-  .project-scale {
-    display: inline-block; padding: 4px 12px; border-radius: 6px;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 13px; font-weight: 500;
-    background: linear-gradient(135deg, var(--navy), var(--blue));
-    color: white; margin-bottom: 16px;
-  }
-  .project-title { font-size: 17px; font-weight: 700; color: var(--navy); margin-bottom: 10px; }
-  .project-desc { font-size: 13px; color: var(--gray-500); line-height: 1.75; margin-bottom: 16px; }
-  .project-role { font-size: 12px; color: var(--blue); font-weight: 600; }
+/* CONTACT */
+#contact { background:linear-gradient(135deg,var(--navy) 0%,#1a3a6e 100%); color:white; text-align:center; }
+#contact .section-label { color:var(--accent); justify-content:center; }
+#contact .section-label::after { background:var(--accent); }
+#contact .section-title { color:white; }
+#contact .section-sub { color:rgba(255,255,255,0.65); margin:0 auto 48px; }
+.contact-grid { display:flex; justify-content:center; gap:16px; flex-wrap:wrap; }
+.contact-card { background:rgba(255,255,255,0.09); border:1px solid rgba(255,255,255,0.15); border-radius:14px; padding:20px 28px; display:flex; align-items:center; gap:14px; text-decoration:none; color:white; transition:all 0.2s; min-width:200px; }
+.contact-card:hover { background:rgba(255,255,255,0.16); transform:translateY(-2px); }
+.contact-icon { font-size:22px; }
+.contact-label { font-size:11px; color:rgba(255,255,255,0.5); letter-spacing:0.08em; text-transform:uppercase; margin-bottom:2px; }
+.contact-value { font-size:14px; font-weight:500; }
 
-  /* SKILLS BARS */
-  #skills { background: white; }
-  .skills-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; }
-  .skill-group-title { font-size: 13px; font-weight: 700; color: var(--navy); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 24px; padding-bottom: 10px; border-bottom: 2px solid var(--gray-100); }
-  .skill-item { margin-bottom: 20px; }
-  .skill-name-row { display: flex; justify-content: space-between; margin-bottom: 8px; }
-  .skill-name { font-size: 13px; color: var(--gray-700); font-weight: 500; }
-  .skill-level { font-size: 12px; color: var(--blue); font-family: 'JetBrains Mono', monospace; }
-  .skill-bar { height: 6px; background: var(--gray-100); border-radius: 100px; overflow: hidden; }
-  .skill-fill {
-    height: 100%; border-radius: 100px;
-    background: linear-gradient(90deg, var(--blue), var(--accent));
-    animation: fillBar 1s ease both;
-    animation-play-state: paused;
-  }
-  .skill-fill.visible { animation-play-state: running; }
-  @keyframes fillBar { from { width: 0 !important; } }
+/* FOOTER */
+footer { background:#0a1929; color:rgba(255,255,255,0.35); text-align:center; padding:24px; font-size:12px; font-family:'JetBrains Mono',monospace; }
 
-  .cert-list { margin-top: 8px; }
-  .cert-item {
-    display: flex; align-items: center; gap: 12px;
-    padding: 12px 16px; margin-bottom: 10px;
-    background: var(--surface); border-radius: 10px;
-    border: 1px solid #e8edf3; font-size: 13px; color: var(--gray-700);
-  }
-  .cert-icon { font-size: 18px; }
+/* ANIMATIONS */
+@keyframes fadeUp { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
+@keyframes fadeIn { from{opacity:0} to{opacity:1} }
+.reveal { opacity:0; transform:translateY(20px); transition:opacity 0.6s ease,transform 0.6s ease; }
+.reveal.visible { opacity:1; transform:none; }
 
-  /* CONTACT */
-  #contact {
-    background: linear-gradient(135deg, var(--navy) 0%, #1a3a6e 100%);
-    color: white; text-align: center;
-  }
-  #contact .section-label { color: var(--accent); justify-content: center; }
-  #contact .section-label::after { background: var(--accent); }
-  #contact .section-title { color: white; }
-  #contact .section-sub { color: rgba(255,255,255,0.6); margin: 0 auto 48px; }
-  .contact-grid { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
-  .contact-card {
-    background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15);
-    border-radius: 14px; padding: 20px 28px;
-    display: flex; align-items: center; gap: 14px;
-    text-decoration: none; color: white;
-    font-size: 14px; transition: all 0.2s;
-  }
-  .contact-card:hover { background: rgba(255,255,255,0.15); transform: translateY(-2px); }
-  .contact-icon { font-size: 22px; }
-  .contact-label { font-size: 10px; color: rgba(255,255,255,0.5); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 2px; }
-  .contact-value { font-size: 14px; font-weight: 500; }
-
-  /* FOOTER */
-  footer {
-    background: #0a1929; color: rgba(255,255,255,0.4);
-    text-align: center; padding: 24px;
-    font-size: 12px; font-family: 'JetBrains Mono', monospace;
-  }
-
-  /* ANIMATIONS */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(24px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-  }
-
-  .reveal {
-    opacity: 0; transform: translateY(20px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
-  }
-  .reveal.visible { opacity: 1; transform: none; }
-
-  /* MOBILE */
-  @media (max-width: 900px) {
-    nav { padding: 0 24px; }
-    .nav-links { display: none; }
-    .hero { grid-template-columns: 1fr; }
-    .hero-right { display: none; }
-    .hero-left { padding: 60px 32px; }
-    section { padding: 60px 24px; }
-    .strength-grid { grid-template-columns: 1fr; }
-    .project-grid { grid-template-columns: 1fr; }
-    .skills-wrapper { grid-template-columns: 1fr; gap: 40px; }
-    .timeline::before { left: 12px; }
-    .exp-item { grid-template-columns: 40px 1fr; }
-  }
+/* MOBILE */
+@media (max-width:960px) {
+  nav { padding:0 20px; }
+  .nav-links { display:none; }
+  .hero { grid-template-columns:1fr; }
+  .hero-right { display:none; }
+  .hero-left { padding:56px 24px; }
+  section, #action-photos { padding:60px 24px; }
+  .strength-grid { grid-template-columns:1fr; }
+  .photo-showcase { grid-template-columns:1fr; }
+  .project-grid { grid-template-columns:1fr; }
+  .skills-wrapper { grid-template-columns:1fr; gap:32px; }
+  .timeline::before { left:14px; }
+  .exp-item { padding-left:48px; }
+  .exp-dot { left:6px; }
+}
 </style>
 </head>
 <body>
@@ -392,6 +220,7 @@
   <ul class="nav-links">
     <li><a href="#strengths">核心能力</a></li>
     <li><a href="#experience">工作經歷</a></li>
+    <li><a href="#action-photos">實戰現場</a></li>
     <li><a href="#projects">代表專案</a></li>
     <li><a href="#skills">技能與證照</a></li>
     <li><a href="#contact">聯絡我</a></li>
@@ -425,6 +254,9 @@
     </div>
   </div>
   <div class="hero-right">
+    <div class="hero-photo" id="heroPhoto">
+      <img src="https://drive.google.com/thumbnail?id=1tnsOs7GO7Z1d6NA6-X0B2Oh34-ACZraH&sz=w400" alt="丁柏瑞">
+    </div>
     <div class="stat-grid">
       <div class="stat-card">
         <div class="stat-number">7<span>+</span></div>
@@ -439,8 +271,8 @@
         <div class="stat-label">累積專案規模</div>
       </div>
       <div class="stat-card">
-        <div class="stat-number">3<span>個</span></div>
-        <div class="stat-label">跨產業實戰領域</div>
+        <div class="stat-number">5<span>~6年</span></div>
+        <div class="stat-label">跨產業實戰年資</div>
       </div>
     </div>
     <div class="hero-quote">
@@ -478,7 +310,7 @@
     <div class="strength-card reveal">
       <span class="strength-icon">⚡</span>
       <div class="strength-title">新能源與 IT Infra 雙領域知識</div>
-      <div class="strength-desc">精通 IT Infra（伺服器、SAN 儲存、HCI）與能源產業（AC/DC 充電樁、EMS 能源管控系統、V2G）兩大技術領域，能快速切入技術討論並提出可行方案。</div>
+      <div class="strength-desc">精通 IT Infra（伺服器、SAN 儲存、HCI）與能源產業（AC/DC 充電樁、EMS 能源管控、V2G）兩大技術領域，能快速切入技術討論並提出可行方案。</div>
     </div>
     <div class="strength-card reveal">
       <span class="strength-icon">📣</span>
@@ -496,14 +328,15 @@
   <div class="timeline">
 
     <div class="exp-item reveal">
-      <div class="exp-dot"><div class="exp-dot-inner"></div></div>
+      <div class="exp-dot"></div>
       <div class="exp-content">
+        <span class="exp-logo-badge badge-star">★ 星舟快充</span>
         <div class="exp-header">
           <div>
             <div class="exp-company">星舟快充股份有限公司（泓德能源集團子公司）・光電產業</div>
             <div class="exp-role">通路業務專員</div>
           </div>
-          <div class="exp-period">2024/04 — 2025/11 ・ 1年8個月</div>
+          <div class="exp-period">2024/04 — 2025/11　1年8個月</div>
         </div>
         <div class="exp-achievements">
           <div class="achievement">針對企業、建商、社區執行 <strong>70+ 次 B2B 需求訪談</strong>，完整涵蓋需求釐清、場域盤點、提案互動到建置驗收全流程</div>
@@ -522,18 +355,19 @@
     </div>
 
     <div class="exp-item reveal">
-      <div class="exp-dot"><div class="exp-dot-inner"></div></div>
+      <div class="exp-dot"></div>
       <div class="exp-content">
+        <span class="exp-logo-badge badge-synnex">聯強國際 SYNNEX</span>
         <div class="exp-header">
           <div>
             <div class="exp-company">聯強國際股份有限公司・電子通訊/電腦週邊批發業 500人以上</div>
             <div class="exp-role">產品規劃資深專員（PM）</div>
           </div>
-          <div class="exp-period">2022/07 — 2024/02 ・ 1年8個月</div>
+          <div class="exp-period">2022/07 — 2024/02　1年8個月</div>
         </div>
         <div class="exp-achievements">
           <div class="achievement">主導儲存系統與 IPC 工控產品線，獨立操盤從引進、訂價、備貨、行銷推廣至售後服務完整管理流程</div>
-          <div class="achievement">統籌聯強 × Seagate 全台經銷商培訓計劃，獨立擔任主講人，合計 <strong>11 場、逾 350 人次</strong>，單場直播觸及 393 人</div>
+          <div class="achievement">統籌聯強 × Seagate 全台培訓計劃，獨立擔任主講人，合計 <strong>11 場、逾 350 人次</strong>，單場直播觸及 393 人</div>
           <div class="achievement">建立安全庫存機制與庫存調配策略，控管 SKU 預算、計算庫齡成本，有效降低呆庫風險</div>
           <div class="achievement">持續追蹤競品動態與通路價格走勢，協助品牌在亞太代理市場維持競爭優勢</div>
         </div>
@@ -548,19 +382,20 @@
     </div>
 
     <div class="exp-item reveal">
-      <div class="exp-dot"><div class="exp-dot-inner"></div></div>
+      <div class="exp-dot"></div>
       <div class="exp-content">
+        <span class="exp-logo-badge badge-xinda">訊達電腦 DIMENSION</span>
         <div class="exp-header">
           <div>
             <div class="exp-company">訊達電腦股份有限公司・電腦系統整合服務業 100~500人</div>
             <div class="exp-role">解決方案協銷專員暨儲備幹部</div>
           </div>
-          <div class="exp-period">2020/12 — 2022/06 ・ 1年7個月</div>
+          <div class="exp-period">2020/12 — 2022/06　1年7個月</div>
         </div>
         <div class="exp-achievements">
           <div class="achievement">以技術顧問身份主導客戶需求訪談，提供雲地端整合規劃建議（Server、Storage、NAS、HCI），負責 Joint call 與 POC 功能測試驗證</div>
           <div class="achievement">主責台積電、跨國企業、連鎖超商等指標性客戶專案，合計執行專案規模逾 <strong>2.7 億</strong></div>
-          <div class="achievement">參與 2.2 億跨國 HPE 機房建置案，擔任需求整合與廠商協調窗口，負責設備規格釐清與進度追蹤</div>
+          <div class="achievement">參與 2.2 億跨國 HPE 機房建置案，擔任需求整合與廠商協調窗口</div>
           <div class="achievement">推動庫齡分析機制與重要供應商時效管理，參與專業人員招募與在職訓練規劃</div>
         </div>
         <div class="exp-highlights">
@@ -572,7 +407,54 @@
         </div>
       </div>
     </div>
+  </div>
+</section>
 
+<!-- ACTION PHOTOS -->
+<section id="action-photos">
+  <div class="section-label">In Action</div>
+  <h2 class="section-title">實戰現場</h2>
+  <p class="section-sub">從展會接洽到培訓主講，在真實場域中累積的專業能量。</p>
+  <div class="photo-showcase">
+    <div class="photo-main" id="photoMain">
+      <img id="actionImg" src="https://drive.google.com/thumbnail?id=1P2H2_5pj0U1P_s3YBvvYaebtvQbdS_mi&sz=w800" alt="台灣國際智慧能源週展會現場">
+      <div class="photo-caption">
+        <strong>台灣國際智慧能源週 ・ 南港展覽館</strong>
+        擔任充電樁與 EMS 現場解說窗口，接洽上市建商、五星飯店高管、車廠等潛在客戶
+      </div>
+    </div>
+    <div class="photo-side">
+      <div class="photo-block">
+        <div class="quote-text">「我習慣在展會上先聽客戶說，再提方案。真正的需求往往藏在第一句話的背後。」</div>
+        <div class="photo-stats-row">
+          <div class="photo-stat">
+            <div class="photo-stat-num">70+</div>
+            <div class="photo-stat-label">次 B2B 需求訪談</div>
+          </div>
+          <div class="photo-stat">
+            <div class="photo-stat-num">11</div>
+            <div class="photo-stat-label">場培訓主講</div>
+          </div>
+          <div class="photo-stat">
+            <div class="photo-stat-num">393</div>
+            <div class="photo-stat-label">直播觸及人次</div>
+          </div>
+        </div>
+      </div>
+      <div class="photo-block">
+        <div class="client-label">接觸過的客戶類型</div>
+        <div class="photo-chips">
+          <span class="photo-chip">上市建商</span>
+          <span class="photo-chip">連鎖五星飯店</span>
+          <span class="photo-chip">車廠總代理</span>
+          <span class="photo-chip">台積電</span>
+          <span class="photo-chip">跨國企業</span>
+          <span class="photo-chip">連鎖超商</span>
+          <span class="photo-chip">台電</span>
+          <span class="photo-chip">社區管委會</span>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -623,88 +505,116 @@
 
 <!-- SKILLS -->
 <section id="skills">
-  <div class="section-label">Skills & Certifications</div>
+  <div class="section-label">Skills &amp; Certifications</div>
   <h2 class="section-title">技能與證照</h2>
   <p class="section-sub">實務能力與原廠認證的結合，確保從技術理解到商務執行的完整覆蓋。</p>
   <div class="skills-wrapper">
     <div>
-      <div class="skill-group-title">專業能力</div>
-      <div class="skill-item">
-        <div class="skill-name-row"><span class="skill-name">專案規劃與進度控管</span><span class="skill-level">●●●●●</span></div>
-        <div class="skill-bar"><div class="skill-fill" style="width:92%"></div></div>
+      <div class="skill-legend">
+        <div class="legend-item"><div class="legend-dot expert"></div>核心專長</div>
+        <div class="legend-item"><div class="legend-dot proficient"></div>熟練</div>
+        <div class="legend-item"><div class="legend-dot familiar"></div>具備基礎</div>
       </div>
-      <div class="skill-item">
-        <div class="skill-name-row"><span class="skill-name">B2B 需求訪談與方案規劃</span><span class="skill-level">●●●●●</span></div>
-        <div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div>
+      <div class="skill-group">
+        <div class="skill-group-title">專案與產品管理</div>
+        <div class="skill-tags">
+          <span class="skill-tag level-expert">專案規劃與進度控管</span>
+          <span class="skill-tag level-expert">B2B 需求訪談</span>
+          <span class="skill-tag level-expert">方案規劃與提案</span>
+          <span class="skill-tag level-proficient">POC / UAT 驗收</span>
+          <span class="skill-tag level-proficient">產品操盤（訂價/備貨）</span>
+          <span class="skill-tag level-proficient">庫存與毛利管理</span>
+          <span class="skill-tag level-proficient">風險辨識與控管</span>
+        </div>
       </div>
-      <div class="skill-item">
-        <div class="skill-name-row"><span class="skill-name">跨部門協調與利害關係人溝通</span><span class="skill-level">●●●●○</span></div>
-        <div class="skill-bar"><div class="skill-fill" style="width:85%"></div></div>
+      <div class="skill-group">
+        <div class="skill-group-title">跨部門與商務協作</div>
+        <div class="skill-tags">
+          <span class="skill-tag level-expert">跨部門協調</span>
+          <span class="skill-tag level-expert">利害關係人溝通</span>
+          <span class="skill-tag level-proficient">通路資源整合</span>
+          <span class="skill-tag level-proficient">原廠關係管理</span>
+          <span class="skill-tag level-proficient">B2B 行銷策劃</span>
+          <span class="skill-tag level-proficient">培訓規劃與主講</span>
+        </div>
       </div>
-      <div class="skill-item">
-        <div class="skill-name-row"><span class="skill-name">產品管理（訂價/備貨/毛利）</span><span class="skill-level">●●●●○</span></div>
-        <div class="skill-bar"><div class="skill-fill" style="width:80%"></div></div>
+      <div class="skill-group">
+        <div class="skill-group-title">技術領域知識</div>
+        <div class="skill-tags">
+          <span class="skill-tag level-expert">IT Infra（伺服器/儲存/HCI）</span>
+          <span class="skill-tag level-expert">充電樁 AC/DC 架構</span>
+          <span class="skill-tag level-proficient">EMS 能源管控系統</span>
+          <span class="skill-tag level-proficient">IPC 工控電腦</span>
+          <span class="skill-tag level-familiar">V2G 技術應用</span>
+          <span class="skill-tag level-familiar">雲地端整合架構</span>
+        </div>
       </div>
-      <div class="skill-item">
-        <div class="skill-name-row"><span class="skill-name">IT Infra 技術知識</span><span class="skill-level">●●●●○</span></div>
-        <div class="skill-bar"><div class="skill-fill" style="width:78%"></div></div>
-      </div>
-      <div class="skill-item">
-        <div class="skill-name-row"><span class="skill-name">能源產業（充電樁 / EMS）</span><span class="skill-level">●●●●○</span></div>
-        <div class="skill-bar"><div class="skill-fill" style="width:75%"></div></div>
-      </div>
-      <div class="skill-group-title" style="margin-top:32px">常用工具</div>
-      <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:8px">
-        <span class="tag">Redmine</span>
-        <span class="tag">Xmind</span>
-        <span class="tag">Draw.io</span>
-        <span class="tag">NotebookLM</span>
-        <span class="tag">MS Office</span>
+      <div class="skill-group">
+        <div class="skill-group-title">常用工具</div>
+        <div class="skill-tags">
+          <span class="skill-tag level-proficient">Redmine</span>
+          <span class="skill-tag level-proficient">Xmind</span>
+          <span class="skill-tag level-proficient">Draw.io</span>
+          <span class="skill-tag level-proficient">NotebookLM</span>
+          <span class="skill-tag level-expert">MS Office / PowerPoint</span>
+        </div>
       </div>
     </div>
     <div>
-      <div class="skill-group-title">語言能力</div>
-      <div class="skill-item">
-        <div class="skill-name-row"><span class="skill-name">中文（母語）</span><span class="skill-level">精通</span></div>
-        <div class="skill-bar"><div class="skill-fill" style="width:100%"></div></div>
-      </div>
-      <div class="skill-item">
-        <div class="skill-name-row"><span class="skill-name">英文 TOEIC 770（最高 850）</span><span class="skill-level">中高級</span></div>
-        <div class="skill-bar"><div class="skill-fill" style="width:75%"></div></div>
-      </div>
-      <div class="skill-item">
-        <div class="skill-name-row"><span class="skill-name">日文 JLPT N5</span><span class="skill-level">基礎</span></div>
-        <div class="skill-bar"><div class="skill-fill" style="width:20%"></div></div>
-      </div>
-
-      <div class="skill-group-title" style="margin-top:32px">證照與認證</div>
-      <div class="cert-list">
-        <div class="cert-item">
-          <span class="cert-icon">🏆</span>
-          <div>
-            <div style="font-weight:600;color:var(--navy)">HPE Sales Certified</div>
-            <div style="font-size:11px;color:var(--gray-500)">Edge-to-Cloud Solutions｜Hewlett Packard Enterprise</div>
+      <div class="skill-group">
+        <div class="skill-group-title">語言能力</div>
+        <div class="lang-item">
+          <div class="lang-header">
+            <span class="lang-name">中文（母語）</span>
+            <span class="lang-score">精通</span>
           </div>
+          <div class="lang-bar"><div class="lang-fill" data-width="100"></div></div>
         </div>
-        <div class="cert-item">
-          <span class="cert-icon">🏆</span>
-          <div>
-            <div style="font-weight:600;color:var(--navy)">Seagate SCSP & SCSE Certified</div>
-            <div style="font-size:11px;color:var(--gray-500)">Storage Certified Sales Professional｜Seagate</div>
+        <div class="lang-item">
+          <div class="lang-header">
+            <span class="lang-name">英文・TOEIC 770（最高 850）</span>
+            <span class="lang-score">中高級・可書信/簡報</span>
           </div>
+          <div class="lang-bar"><div class="lang-fill" data-width="75"></div></div>
         </div>
-        <div class="cert-item">
-          <span class="cert-icon">🎤</span>
-          <div>
-            <div style="font-weight:600;color:var(--navy)">Dale Carnegie 卡內基訓練</div>
-            <div style="font-size:11px;color:var(--gray-500)">溝通與人際關係・Certificate of Achievement</div>
+        <div class="lang-item">
+          <div class="lang-header">
+            <span class="lang-name">日文・JLPT N5</span>
+            <span class="lang-score">基礎</span>
           </div>
+          <div class="lang-bar"><div class="lang-fill" data-width="18"></div></div>
         </div>
-        <div class="cert-item">
-          <span class="cert-icon">🎓</span>
-          <div>
-            <div style="font-weight:600;color:var(--navy)">私立大同大學・事業經營所 碩士</div>
-            <div style="font-size:11px;color:var(--gray-500)">大學部：事業經營系｜2014/9 — 2016/7</div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">證照與認證</div>
+        <div class="cert-list">
+          <div class="cert-item">
+            <span class="cert-icon">🏆</span>
+            <div>
+              <div class="cert-name">HPE Sales Certified</div>
+              <div class="cert-sub">Edge-to-Cloud Solutions｜Hewlett Packard Enterprise</div>
+            </div>
+          </div>
+          <div class="cert-item">
+            <span class="cert-icon">🏆</span>
+            <div>
+              <div class="cert-name">Seagate SCSP &amp; SCSE Certified</div>
+              <div class="cert-sub">Storage Certified Sales Professional｜Seagate</div>
+            </div>
+          </div>
+          <div class="cert-item">
+            <span class="cert-icon">🎤</span>
+            <div>
+              <div class="cert-name">Dale Carnegie 卡內基訓練</div>
+              <div class="cert-sub">溝通與人際關係・Certificate of Achievement</div>
+            </div>
+          </div>
+          <div class="cert-item">
+            <span class="cert-icon">🎓</span>
+            <div>
+              <div class="cert-name">私立大同大學・事業經營所 碩士</div>
+              <div class="cert-sub">大學部：事業經營系｜畢業於 2016</div>
+            </div>
           </div>
         </div>
       </div>
@@ -716,7 +626,7 @@
 <section id="contact">
   <div class="section-label">Get In Touch</div>
   <h2 class="section-title">歡迎與我聯繫</h2>
-  <p class="section-sub">錄取後兩週可上班，希望地點：台北市、新北市<br>目標職類：產品管理師・專案經理・產品企劃</p>
+  <p class="section-sub">目標職類：產品管理師・專案經理・產品企劃<br>歡迎來電、來信，或直接傳送這個頁面給用人主管</p>
   <div class="contact-grid">
     <a href="tel:0937425692" class="contact-card">
       <span class="contact-icon">📱</span>
@@ -743,43 +653,78 @@
       <span class="contact-icon">💼</span>
       <div>
         <div class="contact-label">工作性質</div>
-        <div class="contact-value">全職・日班・可配合遠端</div>
+        <div class="contact-value">全職・可配合遠端</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
   <p>© 2026 Ray Ding 丁柏瑞 ・ Product Manager / B2B Solution ・ Taipei, Taiwan</p>
 </footer>
 
 <script>
-  // Scroll reveal
-  const reveals = document.querySelectorAll('.reveal');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry, i) => {
-      if (entry.isIntersecting) {
-        setTimeout(() => {
-          entry.target.classList.add('visible');
-        }, i * 80);
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.1 });
-  reveals.forEach(el => observer.observe(el));
+(function() {
+  // 照片載入失敗備援
+  var heroImg = document.querySelector('#heroPhoto img');
+  if (heroImg) {
+    heroImg.onerror = function() {
+      this.parentElement.innerHTML = '<div class="hero-photo-fallback">👤</div>';
+    };
+  }
 
-  // Skill bar animation on scroll
-  const skillFills = document.querySelectorAll('.skill-fill');
-  const skillObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        skillObserver.unobserve(entry.target);
+  var actionImg = document.getElementById('actionImg');
+  if (actionImg) {
+    actionImg.onerror = function() {
+      var container = document.getElementById('photoMain');
+      if (container) {
+        this.remove();
+        var fb = document.createElement('div');
+        fb.className = 'photo-fallback';
+        fb.textContent = '📷 展會現場照片';
+        container.insertBefore(fb, container.firstChild);
       }
+    };
+  }
+
+  // Scroll reveal
+  var reveals = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    var revealObs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry, i) {
+        if (entry.isIntersecting) {
+          setTimeout(function() {
+            entry.target.classList.add('visible');
+          }, i * 80);
+          revealObs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08 });
+    reveals.forEach(function(el) { revealObs.observe(el); });
+  } else {
+    reveals.forEach(function(el) { el.classList.add('visible'); });
+  }
+
+  // Language bar animation
+  var langFills = document.querySelectorAll('.lang-fill');
+  if ('IntersectionObserver' in window) {
+    var langObs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          var w = entry.target.getAttribute('data-width') || '0';
+          entry.target.style.width = w + '%';
+          langObs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.3 });
+    langFills.forEach(function(el) { langObs.observe(el); });
+  } else {
+    langFills.forEach(function(el) {
+      var w = el.getAttribute('data-width') || '0';
+      el.style.width = w + '%';
     });
-  }, { threshold: 0.3 });
-  skillFills.forEach(el => skillObserver.observe(el));
+  }
+})();
 </script>
 </body>
 </html>
