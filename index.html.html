@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>丁柏瑞 Ray Ding｜Product Manager / B2B Solution</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&family=DM+Serif+Display:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0f2340;
+    --blue: #1a5fb4;
+    --blue-light: #3584e4;
+    --accent: #00b4d8;
+    --accent2: #f77f00;
+    --gray-900: #1c1c1e;
+    --gray-700: #3a3a3c;
+    --gray-500: #636366;
+    --gray-300: #c7c7cc;
+    --gray-100: #f2f2f7;
+    --white: #ffffff;
+    --surface: #fafbfc;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Noto Sans TC', sans-serif;
+    background: var(--white);
+    color: var(--gray-900);
+    line-height: 1.7;
+    font-size: 15px;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+    padding: 0 40px;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 60px;
+  }
+  .nav-brand {
+    font-family: 'DM Serif Display', serif;
+    font-size: 20px; color: var(--navy);
+    letter-spacing: 0.02em;
+  }
+  .nav-brand span { color: var(--blue); }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a {
+    text-decoration: none; color: var(--gray-700);
+    font-size: 13px; font-weight: 500; letter-spacing: 0.04em;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--blue); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-top: 60px;
+    overflow: hidden;
+  }
+  .hero-left {
+    padding: 80px 60px 80px 80px;
+    display: flex; flex-direction: column; justify-content: center;
+    animation: fadeUp 0.8s ease both;
+  }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: #e8f4fd; color: var(--blue);
+    padding: 6px 14px; border-radius: 100px;
+    font-size: 12px; font-weight: 500; letter-spacing: 0.06em;
+    margin-bottom: 28px; width: fit-content;
+  }
+  .hero-badge::before {
+    content: ''; width: 6px; height: 6px; border-radius: 50%;
+    background: var(--accent); display: block;
+    animation: pulse 2s ease infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.4); }
+  }
+  .hero-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(48px, 6vw, 80px);
+    line-height: 1.05;
+    color: var(--navy);
+    margin-bottom: 8px;
+  }
+  .hero-name-en {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 18px; color: var(--blue-light);
+    font-weight: 400; letter-spacing: 0.08em;
+    margin-bottom: 28px;
+  }
+  .hero-tagline {
+    font-size: 17px; color: var(--gray-700); font-weight: 300;
+    line-height: 1.8; max-width: 420px; margin-bottom: 40px;
+  }
+  .hero-tagline strong { color: var(--navy); font-weight: 700; }
+
+  .hero-tags {
+    display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 44px;
+  }
+  .tag {
+    padding: 6px 14px; border-radius: 6px;
+    font-size: 12px; font-weight: 500;
+    background: var(--gray-100); color: var(--gray-700);
+    border: 1px solid var(--gray-300);
+    transition: all 0.2s;
+  }
+  .tag:hover { background: var(--navy); color: white; border-color: var(--navy); }
+
+  .hero-cta { display: flex; gap: 14px; align-items: center; }
+  .btn-primary {
+    padding: 13px 28px; border-radius: 8px;
+    background: var(--navy); color: white;
+    font-size: 14px; font-weight: 500; letter-spacing: 0.04em;
+    text-decoration: none; border: 2px solid var(--navy);
+    transition: all 0.2s;
+  }
+  .btn-primary:hover { background: var(--blue); border-color: var(--blue); transform: translateY(-1px); }
+  .btn-outline {
+    padding: 13px 28px; border-radius: 8px;
+    background: transparent; color: var(--navy);
+    font-size: 14px; font-weight: 500; letter-spacing: 0.04em;
+    text-decoration: none; border: 2px solid var(--gray-300);
+    transition: all 0.2s;
+  }
+  .btn-outline:hover { border-color: var(--navy); }
+
+  .hero-right {
+    background: linear-gradient(135deg, #0f2340 0%, #1a5fb4 60%, #00b4d8 100%);
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    padding: 80px 60px;
+    position: relative; overflow: hidden;
+    animation: fadeIn 1s ease 0.3s both;
+  }
+  .hero-right::before {
+    content: '';
+    position: absolute; top: -80px; right: -80px;
+    width: 300px; height: 300px; border-radius: 50%;
+    background: rgba(255,255,255,0.05);
+  }
+  .hero-right::after {
+    content: '';
+    position: absolute; bottom: -60px; left: -60px;
+    width: 200px; height: 200px; border-radius: 50%;
+    background: rgba(0,180,216,0.15);
+  }
+
+  .stat-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
+    width: 100%; max-width: 360px; z-index: 1;
+  }
+  .stat-card {
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 16px; padding: 24px;
+    transition: transform 0.2s;
+  }
+  .stat-card:hover { transform: translateY(-4px); }
+  .stat-number {
+    font-family: 'DM Serif Display', serif;
+    font-size: 42px; color: white; line-height: 1;
+    margin-bottom: 4px;
+  }
+  .stat-number span { font-size: 20px; color: var(--accent); }
+  .stat-label { font-size: 11px; color: rgba(255,255,255,0.7); letter-spacing: 0.06em; font-weight: 500; }
+
+  .hero-quote {
+    margin-top: 32px; max-width: 340px; z-index: 1;
+    padding: 20px 24px;
+    background: rgba(255,255,255,0.08);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 12px 12px 0;
+  }
+  .hero-quote p { color: rgba(255,255,255,0.85); font-size: 13px; line-height: 1.7; font-style: italic; }
+
+  /* SECTIONS */
+  section { padding: 100px 80px; }
+  .section-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; letter-spacing: 0.15em; color: var(--blue);
+    text-transform: uppercase; margin-bottom: 12px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .section-label::after {
+    content: ''; flex: 1; max-width: 40px; height: 1px; background: var(--blue);
+  }
+  .section-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(32px, 4vw, 48px); color: var(--navy);
+    line-height: 1.15; margin-bottom: 16px;
+  }
+  .section-sub { color: var(--gray-500); font-size: 15px; max-width: 480px; line-height: 1.7; margin-bottom: 60px; }
+
+  /* SKILLS */
+  #strengths { background: var(--surface); }
+  .strength-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .strength-card {
+    background: white; border-radius: 16px; padding: 32px;
+    border: 1px solid #e8edf3;
+    transition: all 0.25s;
+    position: relative; overflow: hidden;
+  }
+  .strength-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--blue), var(--accent));
+    transform: scaleX(0); transform-origin: left;
+    transition: transform 0.3s;
+  }
+  .strength-card:hover::before { transform: scaleX(1); }
+  .strength-card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0,0,0,0.08); }
+  .strength-icon {
+    font-size: 32px; margin-bottom: 16px; display: block;
+  }
+  .strength-title { font-size: 16px; font-weight: 700; color: var(--navy); margin-bottom: 10px; }
+  .strength-desc { font-size: 13px; color: var(--gray-500); line-height: 1.75; }
+
+  /* EXPERIENCE */
+  #experience { background: white; }
+  .timeline { position: relative; }
+  .timeline::before {
+    content: ''; position: absolute; left: 20px; top: 0; bottom: 0;
+    width: 2px; background: linear-gradient(to bottom, var(--blue), var(--accent));
+  }
+  .exp-item {
+    display: grid; grid-template-columns: 60px 1fr; gap: 0;
+    margin-bottom: 48px; animation: fadeUp 0.5s ease both;
+  }
+  .exp-dot {
+    display: flex; justify-content: center; padding-top: 4px;
+    position: relative; z-index: 1;
+  }
+  .exp-dot-inner {
+    width: 16px; height: 16px; border-radius: 50%;
+    background: white; border: 3px solid var(--blue);
+    margin-left: -7px;
+  }
+  .exp-content {
+    background: var(--surface); border-radius: 16px; padding: 28px 32px;
+    border: 1px solid #e8edf3; margin-left: 8px;
+    transition: all 0.2s;
+  }
+  .exp-content:hover { border-color: var(--blue-light); box-shadow: 0 8px 24px rgba(26,95,180,0.08); }
+  .exp-header { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+  .exp-company { font-size: 11px; color: var(--blue); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 4px; }
+  .exp-role { font-size: 18px; font-weight: 700; color: var(--navy); }
+  .exp-period {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; color: var(--gray-500);
+    background: var(--gray-100); padding: 4px 10px; border-radius: 4px;
+  }
+  .exp-desc { color: var(--gray-700); font-size: 13.5px; line-height: 1.75; }
+  .exp-highlights { margin-top: 16px; display: flex; flex-wrap: wrap; gap: 8px; }
+  .highlight-chip {
+    font-size: 11px; padding: 4px 12px; border-radius: 100px;
+    background: #e8f4fd; color: var(--blue); font-weight: 500;
+  }
+  .exp-achievements { margin-top: 16px; }
+  .achievement {
+    display: flex; align-items: flex-start; gap: 10px;
+    padding: 10px 0; border-bottom: 1px solid #f0f0f5;
+    font-size: 13px; color: var(--gray-700);
+  }
+  .achievement:last-child { border: none; }
+  .achievement::before { content: '▸'; color: var(--accent); flex-shrink: 0; margin-top: 2px; }
+
+  /* PROJECTS */
+  #projects { background: var(--surface); }
+  .project-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+  .project-card {
+    background: white; border-radius: 16px; padding: 32px;
+    border: 1px solid #e8edf3;
+    transition: all 0.25s; cursor: default;
+  }
+  .project-card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0,0,0,0.08); border-color: var(--blue-light); }
+  .project-scale {
+    display: inline-block; padding: 4px 12px; border-radius: 6px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px; font-weight: 500;
+    background: linear-gradient(135deg, var(--navy), var(--blue));
+    color: white; margin-bottom: 16px;
+  }
+  .project-title { font-size: 17px; font-weight: 700; color: var(--navy); margin-bottom: 10px; }
+  .project-desc { font-size: 13px; color: var(--gray-500); line-height: 1.75; margin-bottom: 16px; }
+  .project-role { font-size: 12px; color: var(--blue); font-weight: 600; }
+
+  /* SKILLS BARS */
+  #skills { background: white; }
+  .skills-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; }
+  .skill-group-title { font-size: 13px; font-weight: 700; color: var(--navy); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 24px; padding-bottom: 10px; border-bottom: 2px solid var(--gray-100); }
+  .skill-item { margin-bottom: 20px; }
+  .skill-name-row { display: flex; justify-content: space-between; margin-bottom: 8px; }
+  .skill-name { font-size: 13px; color: var(--gray-700); font-weight: 500; }
+  .skill-level { font-size: 12px; color: var(--blue); font-family: 'JetBrains Mono', monospace; }
+  .skill-bar { height: 6px; background: var(--gray-100); border-radius: 100px; overflow: hidden; }
+  .skill-fill {
+    height: 100%; border-radius: 100px;
+    background: linear-gradient(90deg, var(--blue), var(--accent));
+    animation: fillBar 1s ease both;
+    animation-play-state: paused;
+  }
+  .skill-fill.visible { animation-play-state: running; }
+  @keyframes fillBar { from { width: 0 !important; } }
+
+  .cert-list { margin-top: 8px; }
+  .cert-item {
+    display: flex; align-items: center; gap: 12px;
+    padding: 12px 16px; margin-bottom: 10px;
+    background: var(--surface); border-radius: 10px;
+    border: 1px solid #e8edf3; font-size: 13px; color: var(--gray-700);
+  }
+  .cert-icon { font-size: 18px; }
+
+  /* CONTACT */
+  #contact {
+    background: linear-gradient(135deg, var(--navy) 0%, #1a3a6e 100%);
+    color: white; text-align: center;
+  }
+  #contact .section-label { color: var(--accent); justify-content: center; }
+  #contact .section-label::after { background: var(--accent); }
+  #contact .section-title { color: white; }
+  #contact .section-sub { color: rgba(255,255,255,0.6); margin: 0 auto 48px; }
+  .contact-grid { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+  .contact-card {
+    background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 14px; padding: 20px 28px;
+    display: flex; align-items: center; gap: 14px;
+    text-decoration: none; color: white;
+    font-size: 14px; transition: all 0.2s;
+  }
+  .contact-card:hover { background: rgba(255,255,255,0.15); transform: translateY(-2px); }
+  .contact-icon { font-size: 22px; }
+  .contact-label { font-size: 10px; color: rgba(255,255,255,0.5); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 2px; }
+  .contact-value { font-size: 14px; font-weight: 500; }
+
+  /* FOOTER */
+  footer {
+    background: #0a1929; color: rgba(255,255,255,0.4);
+    text-align: center; padding: 24px;
+    font-size: 12px; font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  .reveal {
+    opacity: 0; transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  /* MOBILE */
+  @media (max-width: 900px) {
+    nav { padding: 0 24px; }
+    .nav-links { display: none; }
+    .hero { grid-template-columns: 1fr; }
+    .hero-right { display: none; }
+    .hero-left { padding: 60px 32px; }
+    section { padding: 60px 24px; }
+    .strength-grid { grid-template-columns: 1fr; }
+    .project-grid { grid-template-columns: 1fr; }
+    .skills-wrapper { grid-template-columns: 1fr; gap: 40px; }
+    .timeline::before { left: 12px; }
+    .exp-item { grid-template-columns: 40px 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-brand">Ray <span>Ding</span></div>
+  <ul class="nav-links">
+    <li><a href="#strengths">核心能力</a></li>
+    <li><a href="#experience">工作經歷</a></li>
+    <li><a href="#projects">代表專案</a></li>
+    <li><a href="#skills">技能與證照</a></li>
+    <li><a href="#contact">聯絡我</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-badge">目前積極求職中・台北市</div>
+    <h1 class="hero-name">丁柏瑞</h1>
+    <div class="hero-name-en">RAY DING</div>
+    <p class="hero-tagline">
+      專注於<strong>技術解決方案整合</strong>與<strong>專案落地執行</strong>的 PM。<br>
+      橫跨 IT 系統整合、通路產品管理與新能源產業，<br>
+      從需求訪談到建置驗收，具備完整的 B2B 專案實戰能力。
+    </p>
+    <div class="hero-tags">
+      <span class="tag">專案管理</span>
+      <span class="tag">產品規劃</span>
+      <span class="tag">B2B 解決方案</span>
+      <span class="tag">跨部門協調</span>
+      <span class="tag">IT Infra</span>
+      <span class="tag">能源產業</span>
+      <span class="tag">需求訪談</span>
+      <span class="tag">POC / UAT</span>
+    </div>
+    <div class="hero-cta">
+      <a href="#contact" class="btn-primary">📩 聯絡我</a>
+      <a href="#experience" class="btn-outline">查看完整經歷 →</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="stat-grid">
+      <div class="stat-card">
+        <div class="stat-number">7<span>+</span></div>
+        <div class="stat-label">年工作年資</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">70<span>+</span></div>
+        <div class="stat-label">次 B2B 需求訪談</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">2.7<span>億</span></div>
+        <div class="stat-label">累積專案規模</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">3<span>個</span></div>
+        <div class="stat-label">跨產業實戰領域</div>
+      </div>
+    </div>
+    <div class="hero-quote">
+      <p>「習慣以終為始，先把事情想清楚再做紮實。重視邏輯架構與節點控管，將不確定性拆解成可控項目。」</p>
+    </div>
+  </div>
+</section>
+
+<!-- STRENGTHS -->
+<section id="strengths">
+  <div class="section-label">Core Strengths</div>
+  <h2 class="section-title">核心競爭優勢</h2>
+  <p class="section-sub">橫跨三個產業所淬煉出的能力組合，讓我能快速銜接技術與商務兩端的需求。</p>
+  <div class="strength-grid">
+    <div class="strength-card reveal">
+      <span class="strength-icon">🔍</span>
+      <div class="strength-title">需求整合與技術轉譯</div>
+      <div class="strength-desc">能將客戶模糊的業務痛點拆解為可執行的技術規格，擔任工程端與商務端的溝通橋樑。具備 70+ 次 B2B 需求訪談實務，涵蓋企業、建商、製造業等多元場域。</div>
+    </div>
+    <div class="strength-card reveal">
+      <span class="strength-icon">📋</span>
+      <div class="strength-title">專案時程規劃與風險控管</div>
+      <div class="strength-desc">從目標回推執行路徑，提前盤點風險變數，確保每個環節真正落地。熟悉 POC 驗證、UAT 測試與現場驗收完整流程，具大型跨國專案協調經驗。</div>
+    </div>
+    <div class="strength-card reveal">
+      <span class="strength-icon">🤝</span>
+      <div class="strength-title">跨部門協作與利害關係人管理</div>
+      <div class="strength-desc">熟悉業務、工程、法規、原廠、客戶等多方角色的溝通模式。能先釐清對方真正目標，再找到各方都能接受的推進方式，降低協作摩擦。</div>
+    </div>
+    <div class="strength-card reveal">
+      <span class="strength-icon">📦</span>
+      <div class="strength-title">產品操盤與通路管理</div>
+      <div class="strength-desc">具備從產品引進、訂價策略、備貨規劃、行銷推廣到售後服務的完整操盤能力。獨立管理過儲存陣列、IPC 工控、充電樁等多條產品線。</div>
+    </div>
+    <div class="strength-card reveal">
+      <span class="strength-icon">⚡</span>
+      <div class="strength-title">新能源與 IT Infra 雙領域知識</div>
+      <div class="strength-desc">精通 IT Infra（伺服器、SAN 儲存、HCI）與能源產業（AC/DC 充電樁、EMS 能源管控系統、V2G）兩大技術領域，能快速切入技術討論並提出可行方案。</div>
+    </div>
+    <div class="strength-card reveal">
+      <span class="strength-icon">📣</span>
+      <div class="strength-title">B2B 行銷與培訓策劃</div>
+      <div class="strength-desc">獨立統籌並擔任主講人，執行聯強 × Seagate 全台 11 場經銷商培訓，單場直播觸及 393 人次。具備從策略規劃、EDM 設計到現場主持的完整行銷執行能力。</div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-label">Work Experience</div>
+  <h2 class="section-title">工作經歷</h2>
+  <p class="section-sub">7～8 年的跨產業歷練，始終圍繞「技術解決方案整合」與「專案落地執行」兩大核心。</p>
+  <div class="timeline">
+
+    <div class="exp-item reveal">
+      <div class="exp-dot"><div class="exp-dot-inner"></div></div>
+      <div class="exp-content">
+        <div class="exp-header">
+          <div>
+            <div class="exp-company">星舟快充股份有限公司（泓德能源集團子公司）・光電產業</div>
+            <div class="exp-role">通路業務專員</div>
+          </div>
+          <div class="exp-period">2024/04 — 2025/11 ・ 1年8個月</div>
+        </div>
+        <div class="exp-achievements">
+          <div class="achievement">針對企業、建商、社區執行 <strong>70+ 次 B2B 需求訪談</strong>，完整涵蓋需求釐清、場域盤點、提案互動到建置驗收全流程</div>
+          <div class="achievement">主責台電 V2G 專案需求釐清與進度追蹤，擔任客戶端與技術端溝通橋樑，協調跨單位執行</div>
+          <div class="achievement">參與 EMS 系統與地端 IPC 功能提案與驗證，協調工程與客戶端需求確保規格如期推進</div>
+          <div class="achievement">出席台灣國際智慧能源週展會，接洽上市建商、連鎖五星飯店高管、車廠等潛在客戶</div>
+        </div>
+        <div class="exp-highlights">
+          <span class="highlight-chip">AC/DC 充電樁</span>
+          <span class="highlight-chip">EMS 能源管控</span>
+          <span class="highlight-chip">IPC 工控</span>
+          <span class="highlight-chip">V2G 專案</span>
+          <span class="highlight-chip">ESG 解決方案</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-item reveal">
+      <div class="exp-dot"><div class="exp-dot-inner"></div></div>
+      <div class="exp-content">
+        <div class="exp-header">
+          <div>
+            <div class="exp-company">聯強國際股份有限公司・電子通訊/電腦週邊批發業 500人以上</div>
+            <div class="exp-role">產品規劃資深專員（PM）</div>
+          </div>
+          <div class="exp-period">2022/07 — 2024/02 ・ 1年8個月</div>
+        </div>
+        <div class="exp-achievements">
+          <div class="achievement">主導儲存系統與 IPC 工控產品線，獨立操盤從引進、訂價、備貨、行銷推廣至售後服務完整管理流程</div>
+          <div class="achievement">統籌聯強 × Seagate 全台經銷商培訓計劃，獨立擔任主講人，合計 <strong>11 場、逾 350 人次</strong>，單場直播觸及 393 人</div>
+          <div class="achievement">建立安全庫存機制與庫存調配策略，控管 SKU 預算、計算庫齡成本，有效降低呆庫風險</div>
+          <div class="achievement">持續追蹤競品動態與通路價格走勢，協助品牌在亞太代理市場維持競爭優勢</div>
+        </div>
+        <div class="exp-highlights">
+          <span class="highlight-chip">SAN 企業級儲存</span>
+          <span class="highlight-chip">IPC 工控電腦</span>
+          <span class="highlight-chip">通路管理</span>
+          <span class="highlight-chip">產品操盤</span>
+          <span class="highlight-chip">庫存控管</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-item reveal">
+      <div class="exp-dot"><div class="exp-dot-inner"></div></div>
+      <div class="exp-content">
+        <div class="exp-header">
+          <div>
+            <div class="exp-company">訊達電腦股份有限公司・電腦系統整合服務業 100~500人</div>
+            <div class="exp-role">解決方案協銷專員暨儲備幹部</div>
+          </div>
+          <div class="exp-period">2020/12 — 2022/06 ・ 1年7個月</div>
+        </div>
+        <div class="exp-achievements">
+          <div class="achievement">以技術顧問身份主導客戶需求訪談，提供雲地端整合規劃建議（Server、Storage、NAS、HCI），負責 Joint call 與 POC 功能測試驗證</div>
+          <div class="achievement">主責台積電、跨國企業、連鎖超商等指標性客戶專案，合計執行專案規模逾 <strong>2.7 億</strong></div>
+          <div class="achievement">參與 2.2 億跨國 HPE 機房建置案，擔任需求整合與廠商協調窗口，負責設備規格釐清與進度追蹤</div>
+          <div class="achievement">推動庫齡分析機制與重要供應商時效管理，參與專業人員招募與在職訓練規劃</div>
+        </div>
+        <div class="exp-highlights">
+          <span class="highlight-chip">機架式伺服器</span>
+          <span class="highlight-chip">儲存陣列</span>
+          <span class="highlight-chip">HCI</span>
+          <span class="highlight-chip">台積電</span>
+          <span class="highlight-chip">HPE</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-label">Key Projects</div>
+  <h2 class="section-title">代表專案成果</h2>
+  <p class="section-sub">從百萬到億元規模，跨越製造業、跨國企業、能源產業的實戰紀錄。</p>
+  <div class="project-grid">
+    <div class="project-card reveal">
+      <div class="project-scale">💼 2.2 億</div>
+      <div class="project-title">跨國企業 HPE 機房建置專案</div>
+      <div class="project-desc">迄今最大規模跨國機房建置案，擔任需求整合與廠商協調窗口，負責設備規格釐清、進度追蹤與專案執行協調，確保大型跨國採購案順利落地。</div>
+      <div class="project-role">📌 角色：需求整合窗口・廠商協調・進度追蹤</div>
+    </div>
+    <div class="project-card reveal">
+      <div class="project-scale">🏭 500 萬</div>
+      <div class="project-title">台積電年度大規模設備部署（連續兩年）</div>
+      <div class="project-desc">2021～2022 年連續兩年負責台積電設備導入專案，主責需求確認、設備調度與交付驗收，展現頂尖製造業客戶的服務能力與精準執行力。</div>
+      <div class="project-role">📌 角色：主責 PM・設備調度・交付驗收</div>
+    </div>
+    <div class="project-card reveal">
+      <div class="project-scale">🏪 200 萬</div>
+      <div class="project-title">連鎖超商 HCI 系統架構建置</div>
+      <div class="project-desc">協助規劃執行連鎖超商總部系統架構升級，完成需求訪談、商務提案與建置驗收事宜，確保新架構符合連鎖體系的可擴展性需求。</div>
+      <div class="project-role">📌 角色：需求訪談・方案規劃・建置驗收</div>
+    </div>
+    <div class="project-card reveal">
+      <div class="project-scale">⚡ 台電 V2G</div>
+      <div class="project-title">台電 V2G 示範案場協作專案</div>
+      <div class="project-desc">主責台電 V2G 示範場域需求釐清與進度追蹤，協調星舟 × 台電 × Nuvve 三方合作，推動充電樁與電網雙向儲能技術的落地應用。</div>
+      <div class="project-role">📌 角色：需求釐清・多方協調・進度追蹤</div>
+    </div>
+    <div class="project-card reveal">
+      <div class="project-scale">📢 11 場培訓</div>
+      <div class="project-title">聯強 × Seagate 全台經銷商培訓計劃</div>
+      <div class="project-desc">獨立統籌並擔任主講人，執行 3 場實體研討會（逾 100 人次）、3 場線上直播（單場觸及 393 人）、5 場區域內部訓練，合計 11 場、逾 350 人次。</div>
+      <div class="project-role">📌 角色：專案統籌・活動策劃・主講人</div>
+    </div>
+    <div class="project-card reveal">
+      <div class="project-scale">🏗️ 展會商務</div>
+      <div class="project-title">台灣國際智慧能源週展覽接洽</div>
+      <div class="project-desc">出席南港展覽館，擔任充電樁與 EMS 解說互動窗口，接洽上市建商、五星飯店高管、車廠等潛在客戶，展後促成建商充電場域建置合作。</div>
+      <div class="project-role">📌 角色：展會接洽・商務提案・客戶開發</div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-label">Skills & Certifications</div>
+  <h2 class="section-title">技能與證照</h2>
+  <p class="section-sub">實務能力與原廠認證的結合，確保從技術理解到商務執行的完整覆蓋。</p>
+  <div class="skills-wrapper">
+    <div>
+      <div class="skill-group-title">專業能力</div>
+      <div class="skill-item">
+        <div class="skill-name-row"><span class="skill-name">專案規劃與進度控管</span><span class="skill-level">●●●●●</span></div>
+        <div class="skill-bar"><div class="skill-fill" style="width:92%"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-name-row"><span class="skill-name">B2B 需求訪談與方案規劃</span><span class="skill-level">●●●●●</span></div>
+        <div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-name-row"><span class="skill-name">跨部門協調與利害關係人溝通</span><span class="skill-level">●●●●○</span></div>
+        <div class="skill-bar"><div class="skill-fill" style="width:85%"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-name-row"><span class="skill-name">產品管理（訂價/備貨/毛利）</span><span class="skill-level">●●●●○</span></div>
+        <div class="skill-bar"><div class="skill-fill" style="width:80%"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-name-row"><span class="skill-name">IT Infra 技術知識</span><span class="skill-level">●●●●○</span></div>
+        <div class="skill-bar"><div class="skill-fill" style="width:78%"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-name-row"><span class="skill-name">能源產業（充電樁 / EMS）</span><span class="skill-level">●●●●○</span></div>
+        <div class="skill-bar"><div class="skill-fill" style="width:75%"></div></div>
+      </div>
+      <div class="skill-group-title" style="margin-top:32px">常用工具</div>
+      <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:8px">
+        <span class="tag">Redmine</span>
+        <span class="tag">Xmind</span>
+        <span class="tag">Draw.io</span>
+        <span class="tag">NotebookLM</span>
+        <span class="tag">MS Office</span>
+      </div>
+    </div>
+    <div>
+      <div class="skill-group-title">語言能力</div>
+      <div class="skill-item">
+        <div class="skill-name-row"><span class="skill-name">中文（母語）</span><span class="skill-level">精通</span></div>
+        <div class="skill-bar"><div class="skill-fill" style="width:100%"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-name-row"><span class="skill-name">英文 TOEIC 770（最高 850）</span><span class="skill-level">中高級</span></div>
+        <div class="skill-bar"><div class="skill-fill" style="width:75%"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-name-row"><span class="skill-name">日文 JLPT N5</span><span class="skill-level">基礎</span></div>
+        <div class="skill-bar"><div class="skill-fill" style="width:20%"></div></div>
+      </div>
+
+      <div class="skill-group-title" style="margin-top:32px">證照與認證</div>
+      <div class="cert-list">
+        <div class="cert-item">
+          <span class="cert-icon">🏆</span>
+          <div>
+            <div style="font-weight:600;color:var(--navy)">HPE Sales Certified</div>
+            <div style="font-size:11px;color:var(--gray-500)">Edge-to-Cloud Solutions｜Hewlett Packard Enterprise</div>
+          </div>
+        </div>
+        <div class="cert-item">
+          <span class="cert-icon">🏆</span>
+          <div>
+            <div style="font-weight:600;color:var(--navy)">Seagate SCSP & SCSE Certified</div>
+            <div style="font-size:11px;color:var(--gray-500)">Storage Certified Sales Professional｜Seagate</div>
+          </div>
+        </div>
+        <div class="cert-item">
+          <span class="cert-icon">🎤</span>
+          <div>
+            <div style="font-weight:600;color:var(--navy)">Dale Carnegie 卡內基訓練</div>
+            <div style="font-size:11px;color:var(--gray-500)">溝通與人際關係・Certificate of Achievement</div>
+          </div>
+        </div>
+        <div class="cert-item">
+          <span class="cert-icon">🎓</span>
+          <div>
+            <div style="font-weight:600;color:var(--navy)">私立大同大學・事業經營所 碩士</div>
+            <div style="font-size:11px;color:var(--gray-500)">大學部：事業經營系｜2014/9 — 2016/7</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-label">Get In Touch</div>
+  <h2 class="section-title">歡迎與我聯繫</h2>
+  <p class="section-sub">錄取後兩週可上班，希望地點：台北市、新北市<br>目標職類：產品管理師・專案經理・產品企劃</p>
+  <div class="contact-grid">
+    <a href="tel:0937425692" class="contact-card">
+      <span class="contact-icon">📱</span>
+      <div>
+        <div class="contact-label">手機</div>
+        <div class="contact-value">0937-425-692</div>
+      </div>
+    </a>
+    <a href="mailto:ray90302@gmail.com" class="contact-card">
+      <span class="contact-icon">✉️</span>
+      <div>
+        <div class="contact-label">Email</div>
+        <div class="contact-value">ray90302@gmail.com</div>
+      </div>
+    </a>
+    <div class="contact-card">
+      <span class="contact-icon">📍</span>
+      <div>
+        <div class="contact-label">所在地</div>
+        <div class="contact-value">台北市士林區</div>
+      </div>
+    </div>
+    <div class="contact-card">
+      <span class="contact-icon">💼</span>
+      <div>
+        <div class="contact-label">工作性質</div>
+        <div class="contact-value">全職・日班・可配合遠端</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 Ray Ding 丁柏瑞 ・ Product Manager / B2B Solution ・ Taipei, Taiwan</p>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          entry.target.classList.add('visible');
+        }, i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+
+  // Skill bar animation on scroll
+  const skillFills = document.querySelectorAll('.skill-fill');
+  const skillObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        skillObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.3 });
+  skillFills.forEach(el => skillObserver.observe(el));
+</script>
+</body>
+</html>
