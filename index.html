@@ -8,207 +8,235 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&family=DM+Serif+Display:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root {
-  --navy: #0f2340; --blue: #1a5fb4; --blue-light: #3584e4; --accent: #00b4d8;
-  --gray-900: #1c1c1e; --gray-700: #3a3a3c; --gray-500: #636366;
-  --gray-300: #c7c7cc; --gray-100: #f2f2f7; --white: #fff; --surface: #fafbfc;
+  --navy:#0f2340; --blue:#1a5fb4; --blue-light:#3584e4; --accent:#00b4d8;
+  --green:#2a7a2a; --orange:#b35a00;
+  --g900:#1c1c1e; --g700:#3a3a3c; --g500:#636366; --g300:#c7c7cc; --g100:#f2f2f7;
+  --white:#fff; --surf:#fafbfc;
 }
-* { margin:0; padding:0; box-sizing:border-box; }
-html { scroll-behavior:smooth; }
-body { font-family:'Noto Sans TC',sans-serif; background:var(--white); color:var(--gray-900); line-height:1.7; font-size:16px; }
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Noto Sans TC',sans-serif;background:var(--white);color:var(--g900);line-height:1.7;font-size:16px;}
 
-/* NAV */
-nav { position:fixed; top:0; left:0; right:0; z-index:100; background:rgba(255,255,255,0.94); backdrop-filter:blur(12px); border-bottom:1px solid rgba(0,0,0,0.08); padding:0 48px; display:flex; align-items:center; justify-content:space-between; height:64px; }
-.nav-brand { font-family:'DM Serif Display',serif; font-size:22px; color:var(--navy); }
-.nav-brand span { color:var(--blue); }
-.nav-links { display:flex; gap:28px; list-style:none; }
-.nav-links a { text-decoration:none; color:var(--gray-700); font-size:13px; font-weight:500; transition:color 0.2s; }
-.nav-links a:hover { color:var(--blue); }
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,0.95);backdrop-filter:blur(12px);border-bottom:1px solid rgba(0,0,0,0.08);padding:0 48px;display:flex;align-items:center;justify-content:space-between;height:64px;}
+.nav-brand{font-family:'DM Serif Display',serif;font-size:22px;color:var(--navy);}
+.nav-brand span{color:var(--blue);}
+.nav-links{display:flex;gap:26px;list-style:none;}
+.nav-links a{text-decoration:none;color:var(--g700);font-size:13px;font-weight:500;transition:color .2s;}
+.nav-links a:hover{color:var(--blue);}
 
-/* HERO */
-.hero { min-height:100vh; display:grid; grid-template-columns:55% 45%; padding-top:64px; overflow:hidden; }
-.hero-left { padding:72px 56px 72px 80px; display:flex; flex-direction:column; justify-content:center; animation:fadeUp 0.8s ease both; }
-.hero-badge { display:inline-flex; align-items:center; gap:8px; background:#e8f4fd; color:var(--blue); padding:7px 16px; border-radius:100px; font-size:13px; font-weight:500; margin-bottom:28px; width:fit-content; }
-.hero-badge::before { content:''; width:7px; height:7px; border-radius:50%; background:var(--accent); display:block; animation:pulse 2s ease infinite; }
-@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(1.5)} }
-.hero-name { font-family:'DM Serif Display',serif; font-size:clamp(52px,6vw,84px); line-height:1.05; color:var(--navy); margin-bottom:8px; }
-.hero-name-en { font-family:'JetBrains Mono',monospace; font-size:20px; color:var(--blue-light); font-weight:400; letter-spacing:0.1em; margin-bottom:28px; }
-.hero-tagline { font-size:17px; color:var(--gray-700); line-height:1.85; max-width:460px; margin-bottom:36px; }
-.hero-tagline strong { color:var(--navy); font-weight:700; }
-.hero-tags { display:flex; flex-wrap:wrap; gap:9px; margin-bottom:44px; }
-.tag { padding:7px 15px; border-radius:6px; font-size:13px; font-weight:500; background:var(--gray-100); color:var(--gray-700); border:1px solid var(--gray-300); transition:all 0.2s; cursor:default; }
-.tag:hover { background:var(--navy); color:white; border-color:var(--navy); }
-.hero-cta { display:flex; gap:14px; align-items:center; }
-.btn-primary { padding:14px 30px; border-radius:8px; background:var(--navy); color:white; font-size:15px; font-weight:500; text-decoration:none; border:2px solid var(--navy); transition:all 0.2s; }
-.btn-primary:hover { background:var(--blue); border-color:var(--blue); transform:translateY(-2px); }
-.btn-outline { padding:14px 30px; border-radius:8px; background:transparent; color:var(--navy); font-size:15px; font-weight:500; text-decoration:none; border:2px solid var(--gray-300); transition:all 0.2s; }
-.btn-outline:hover { border-color:var(--navy); }
+/* ── HERO ── */
+.hero{min-height:100vh;display:grid;grid-template-columns:55% 45%;padding-top:64px;overflow:hidden;}
+.hero-left{padding:60px 52px 60px 80px;display:flex;flex-direction:column;justify-content:center;}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:#e8f4fd;color:var(--blue);padding:6px 16px;border-radius:100px;font-size:13px;font-weight:500;margin-bottom:24px;width:fit-content;}
+.hero-badge::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--accent);display:block;animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.5)}}
+.hero-name{font-family:'DM Serif Display',serif;font-size:clamp(48px,5.5vw,80px);line-height:1.05;color:var(--navy);margin-bottom:6px;}
+.hero-name-en{font-family:'JetBrains Mono',monospace;font-size:18px;color:var(--blue-light);letter-spacing:.1em;margin-bottom:20px;}
+.hero-tagline{font-size:16px;color:var(--g700);line-height:1.8;max-width:440px;margin-bottom:18px;}
+.hero-tagline strong{color:var(--navy);font-weight:700;}
+.hero-summary{margin-bottom:22px;display:flex;flex-direction:column;gap:8px;}
+.summary-item{display:flex;align-items:center;gap:10px;font-size:13.5px;color:var(--g700);}
+.summary-dot{width:6px;height:6px;border-radius:50%;background:var(--accent);flex-shrink:0;}
+.hero-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:32px;}
+.tag{padding:6px 13px;border-radius:6px;font-size:12.5px;font-weight:500;background:var(--g100);color:var(--g700);border:1px solid var(--g300);transition:all .2s;cursor:default;}
+.tag:hover{background:var(--navy);color:white;border-color:var(--navy);}
+.hero-cta{display:flex;gap:12px;align-items:center;}
+.btn-primary{padding:13px 28px;border-radius:8px;background:var(--navy);color:white;font-size:14px;font-weight:500;text-decoration:none;border:2px solid var(--navy);transition:all .2s;}
+.btn-primary:hover{background:var(--blue);border-color:var(--blue);transform:translateY(-2px);}
+.btn-outline{padding:13px 28px;border-radius:8px;background:transparent;color:var(--navy);font-size:14px;font-weight:500;text-decoration:none;border:2px solid var(--g300);transition:all .2s;}
+.btn-outline:hover{border-color:var(--navy);}
 
-/* HERO RIGHT */
-.hero-right { background:linear-gradient(140deg,#0f2340 0%,#1a5fb4 55%,#00b4d8 100%); display:flex; flex-direction:column; justify-content:center; align-items:center; padding:64px 48px; position:relative; overflow:hidden; gap:24px; }
-.hero-right::before { content:''; position:absolute; top:-80px; right:-80px; width:300px; height:300px; border-radius:50%; background:rgba(255,255,255,0.05); }
-.hero-right::after { content:''; position:absolute; bottom:-60px; left:-60px; width:200px; height:200px; border-radius:50%; background:rgba(0,180,216,0.12); }
+/* ── HERO RIGHT ── */
+.hero-right{background:linear-gradient(140deg,#0f2340 0%,#1a5fb4 55%,#00b4d8 100%);display:flex;flex-direction:column;justify-content:center;align-items:center;padding:56px 44px;position:relative;overflow:hidden;gap:20px;}
+.hero-right::before{content:'';position:absolute;top:-80px;right:-80px;width:280px;height:280px;border-radius:50%;background:rgba(255,255,255,0.05);}
+.hero-right::after{content:'';position:absolute;bottom:-60px;left:-60px;width:180px;height:180px;border-radius:50%;background:rgba(0,180,216,0.12);}
+.hero-photo{z-index:1;width:120px;height:120px;border-radius:50%;border:4px solid rgba(255,255,255,0.4);overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,0.3);background:rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.hero-photo img{width:100%;height:100%;object-fit:cover;object-position:center top;}
+.stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;width:100%;max-width:310px;z-index:1;}
+.stat-card{background:rgba(255,255,255,0.1);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.2);border-radius:12px;padding:16px 18px;transition:transform .2s;}
+.stat-card:hover{transform:translateY(-3px);}
+.stat-number{font-family:'DM Serif Display',serif;font-size:30px;color:white;line-height:1;margin-bottom:3px;}
+.stat-number span{font-size:15px;color:var(--accent);}
+.stat-label{font-size:10.5px;color:rgba(255,255,255,0.7);letter-spacing:.04em;font-weight:500;}
+.hero-quote{max-width:300px;z-index:1;padding:14px 18px;background:rgba(255,255,255,0.08);border-left:3px solid var(--accent);border-radius:0 10px 10px 0;}
+.hero-quote p{color:rgba(255,255,255,0.85);font-size:12.5px;line-height:1.75;font-style:italic;}
 
-/* 照片 */
-.hero-photo { z-index:1; width:130px; height:130px; border-radius:50%; border:4px solid rgba(255,255,255,0.4); overflow:hidden; box-shadow:0 8px 32px rgba(0,0,0,0.3); background:rgba(255,255,255,0.1); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
-.hero-photo img { width:100%; height:100%; object-fit:cover; object-position:center top; }
-.hero-photo-fallback { font-size:40px; }
+/* ── METRICS BANNER ── */
+.metrics-banner{background:var(--navy);padding:32px 80px;display:grid;grid-template-columns:repeat(5,1fr);}
+.metric-item{text-align:center;padding:16px 12px;border-right:1px solid rgba(255,255,255,0.1);}
+.metric-item:last-child{border-right:none;}
+.metric-num{font-family:'DM Serif Display',serif;font-size:32px;color:white;line-height:1;margin-bottom:4px;}
+.metric-num span{font-size:16px;color:var(--accent);}
+.metric-label{font-size:12px;color:rgba(255,255,255,0.55);line-height:1.5;margin-bottom:4px;}
+.metric-context{font-size:10.5px;color:rgba(255,255,255,0.28);font-family:'JetBrains Mono',monospace;}
 
-/* Stats */
-.stat-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; width:100%; max-width:330px; z-index:1; }
-.stat-card { background:rgba(255,255,255,0.1); backdrop-filter:blur(10px); border:1px solid rgba(255,255,255,0.2); border-radius:14px; padding:18px 20px; transition:transform 0.2s; }
-.stat-card:hover { transform:translateY(-3px); }
-.stat-number { font-family:'DM Serif Display',serif; font-size:34px; color:white; line-height:1; margin-bottom:4px; }
-.stat-number span { font-size:16px; color:var(--accent); }
-.stat-label { font-size:11px; color:rgba(255,255,255,0.7); letter-spacing:0.05em; font-weight:500; }
-.hero-quote { max-width:310px; z-index:1; padding:16px 20px; background:rgba(255,255,255,0.08); border-left:3px solid var(--accent); border-radius:0 10px 10px 0; }
-.hero-quote p { color:rgba(255,255,255,0.85); font-size:13px; line-height:1.75; font-style:italic; }
+/* ── SECTIONS ── */
+section{padding:80px 80px;}
+.section-label{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.15em;color:var(--blue);text-transform:uppercase;margin-bottom:10px;display:flex;align-items:center;gap:10px;}
+.section-label::after{content:'';flex:1;max-width:36px;height:1px;background:var(--blue);}
+.section-title{font-family:'DM Serif Display',serif;font-size:clamp(30px,3.5vw,44px);color:var(--navy);line-height:1.15;margin-bottom:12px;}
+.section-sub{color:var(--g500);font-size:15px;max-width:500px;line-height:1.75;margin-bottom:48px;}
 
-/* SECTIONS */
-section { padding:96px 80px; }
-.section-label { font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:0.15em; color:var(--blue); text-transform:uppercase; margin-bottom:12px; display:flex; align-items:center; gap:10px; }
-.section-label::after { content:''; flex:1; max-width:40px; height:1px; background:var(--blue); }
-.section-title { font-family:'DM Serif Display',serif; font-size:clamp(32px,4vw,48px); color:var(--navy); line-height:1.15; margin-bottom:14px; }
-.section-sub { color:var(--gray-500); font-size:16px; max-width:520px; line-height:1.75; margin-bottom:56px; }
+/* ── STRENGTHS ── */
+#strengths{background:var(--surf);}
+.strength-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.strength-card{background:white;border-radius:14px;padding:28px;border:1px solid #e8edf3;transition:all .25s;position:relative;overflow:hidden;}
+.strength-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--blue),var(--accent));transform:scaleX(0);transform-origin:left;transition:transform .3s;}
+.strength-card:hover::before{transform:scaleX(1);}
+.strength-card:hover{transform:translateY(-4px);box-shadow:0 16px 36px rgba(0,0,0,0.08);}
+.strength-icon{font-size:30px;margin-bottom:12px;display:block;}
+.strength-title{font-size:15px;font-weight:700;color:var(--navy);margin-bottom:8px;}
+.strength-desc{font-size:13.5px;color:var(--g500);line-height:1.8;}
 
-/* STRENGTHS */
-#strengths { background:var(--surface); }
-.strength-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }
-.strength-card { background:white; border-radius:16px; padding:30px; border:1px solid #e8edf3; transition:all 0.25s; position:relative; overflow:hidden; }
-.strength-card::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(90deg,var(--blue),var(--accent)); transform:scaleX(0); transform-origin:left; transition:transform 0.3s; }
-.strength-card:hover::before { transform:scaleX(1); }
-.strength-card:hover { transform:translateY(-4px); box-shadow:0 20px 40px rgba(0,0,0,0.08); }
-.strength-icon { font-size:32px; margin-bottom:14px; display:block; }
-.strength-title { font-size:16px; font-weight:700; color:var(--navy); margin-bottom:10px; }
-.strength-desc { font-size:14px; color:var(--gray-500); line-height:1.8; }
+/* ── EXPERIENCE ── */
+#experience{background:white;}
+.timeline{position:relative;}
+.timeline::before{content:'';position:absolute;left:28px;top:8px;bottom:8px;width:2px;background:linear-gradient(to bottom,var(--blue),var(--accent));}
+.exp-item{position:relative;padding-left:70px;margin-bottom:36px;}
+.exp-dot{position:absolute;left:20px;top:22px;width:18px;height:18px;border-radius:50%;background:white;border:3px solid var(--blue);z-index:1;}
+.exp-content{background:var(--surf);border-radius:14px;padding:24px 28px;border:1px solid #e8edf3;transition:all .2s;}
+.exp-content:hover{border-color:var(--blue-light);box-shadow:0 8px 24px rgba(26,95,180,0.08);}
+.exp-logo-badge{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;padding:3px 10px;border-radius:4px;margin-bottom:10px;letter-spacing:.04em;}
+.badge-star{background:#1a5fb4;color:white;}
+.badge-synnex{background:#c0392b;color:white;}
+.badge-xinda{background:#003f87;color:white;}
+.exp-header{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;margin-bottom:14px;}
+.exp-company{font-size:11.5px;color:var(--blue);font-weight:600;letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px;}
+.exp-role{font-size:18px;font-weight:700;color:var(--navy);}
+.exp-period{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--g500);background:var(--g100);padding:4px 10px;border-radius:4px;white-space:nowrap;flex-shrink:0;}
+.achievement{display:flex;align-items:flex-start;gap:9px;padding:8px 0;border-bottom:1px solid #f0f0f5;font-size:13.5px;color:var(--g700);line-height:1.75;}
+.achievement:last-child{border:none;}
+.achievement::before{content:'▸';color:var(--accent);flex-shrink:0;margin-top:3px;font-size:11px;}
+/* 量化指標列 */
+.exp-metric-row{display:flex;flex-wrap:wrap;gap:0;margin:14px 0 14px;background:linear-gradient(135deg,#f0f7ff,#e8f4fd);border-radius:10px;border:1px solid #cce0f5;overflow:hidden;}
+.exp-metric{flex:1;min-width:90px;text-align:center;padding:14px 10px;border-right:1px solid #cce0f5;}
+.exp-metric:last-child{border-right:none;}
+.exp-metric-num{font-family:'DM Serif Display',serif;font-size:22px;color:var(--navy);line-height:1;margin-bottom:3px;}
+.exp-metric-num em{font-size:12px;color:var(--blue);font-style:normal;}
+.exp-metric-desc{font-size:11px;color:var(--g500);line-height:1.4;}
+.exp-highlights{display:flex;flex-wrap:wrap;gap:7px;}
+.highlight-chip{font-size:11.5px;padding:4px 11px;border-radius:100px;background:#e8f4fd;color:var(--blue);font-weight:500;}
 
-/* EXPERIENCE */
-#experience { background:white; }
-.timeline { position:relative; }
-.timeline::before { content:''; position:absolute; left:28px; top:8px; bottom:8px; width:2px; background:linear-gradient(to bottom,var(--blue),var(--accent)); }
-.exp-item { position:relative; padding-left:72px; margin-bottom:44px; }
-.exp-dot { position:absolute; left:20px; top:22px; width:18px; height:18px; border-radius:50%; background:white; border:3px solid var(--blue); z-index:1; }
-.exp-content { background:var(--surface); border-radius:16px; padding:26px 30px; border:1px solid #e8edf3; transition:all 0.2s; }
-.exp-content:hover { border-color:var(--blue-light); box-shadow:0 8px 24px rgba(26,95,180,0.08); }
-.exp-logo { height:32px; width:auto; max-width:120px; object-fit:contain; margin-bottom:8px; display:block; opacity:0.8; transition:opacity 0.2s; }
-.exp-content:hover .exp-logo { opacity:1; }
-.exp-logo-badge { display:inline-block; font-family:'JetBrains Mono',monospace; font-size:12px; font-weight:700; padding:3px 10px; border-radius:5px; margin-bottom:8px; letter-spacing:0.04em; }
-.badge-star { background:#1a5fb4; color:white; }
-.badge-synnex { background:#c0392b; color:white; }
-.badge-xinda { background:#003f87; color:white; }
-.exp-header { display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:10px; margin-bottom:14px; }
-.exp-company { font-size:12px; color:var(--blue); font-weight:600; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:4px; }
-.exp-role { font-size:19px; font-weight:700; color:var(--navy); }
-.exp-period { font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--gray-500); background:var(--gray-100); padding:5px 12px; border-radius:4px; white-space:nowrap; flex-shrink:0; }
-.achievement { display:flex; align-items:flex-start; gap:10px; padding:9px 0; border-bottom:1px solid #f0f0f5; font-size:14px; color:var(--gray-700); line-height:1.75; }
-.achievement:last-child { border:none; }
-.achievement::before { content:'▸'; color:var(--accent); flex-shrink:0; margin-top:3px; font-size:12px; }
-.exp-highlights { margin-top:14px; display:flex; flex-wrap:wrap; gap:7px; }
-.highlight-chip { font-size:12px; padding:4px 12px; border-radius:100px; background:#e8f4fd; color:var(--blue); font-weight:500; }
+/* ── CASE STUDIES ── */
+#cases{background:var(--surf);}
+.cases-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;}
+.case-card{background:white;border-radius:16px;border:1px solid #e8edf3;overflow:hidden;transition:all .25s;}
+.case-card:hover{transform:translateY(-4px);box-shadow:0 20px 40px rgba(0,0,0,0.09);}
+.case-header{padding:24px 28px 20px;border-bottom:1px solid #f0f0f5;}
+.case-tag{display:inline-block;font-size:11px;font-weight:600;padding:3px 10px;border-radius:4px;margin-bottom:12px;letter-spacing:.04em;font-family:'JetBrains Mono',monospace;}
+.tag-it{background:#e3f0ff;color:#1a5fb4;}
+.tag-pm{background:#e8f5e8;color:#2a7a2a;}
+.tag-energy{background:#fff3e0;color:#b35a00;}
+.case-title{font-size:16px;font-weight:700;color:var(--navy);margin-bottom:6px;line-height:1.4;}
+.case-scale{font-size:12px;color:var(--g500);font-family:'JetBrains Mono',monospace;}
+.case-body{padding:20px 28px;}
+.case-section-label{font-size:10.5px;font-weight:700;color:var(--g500);text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px;margin-top:14px;}
+.case-section-label:first-child{margin-top:0;}
+.case-text{font-size:13.5px;color:var(--g700);line-height:1.75;}
+.case-result{font-size:13.5px;color:var(--green);font-weight:600;line-height:1.75;}
+.case-result::before{content:'✓ ';}
+.case-chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px;}
+.case-chip{font-size:11px;padding:3px 10px;border-radius:100px;background:var(--g100);color:var(--g700);border:1px solid var(--g300);}
 
-/* ACTION PHOTOS */
-#action-photos { background:var(--navy); padding:96px 80px; }
-#action-photos .section-label { color:var(--accent); }
-#action-photos .section-label::after { background:var(--accent); }
-#action-photos .section-title { color:white; }
-#action-photos .section-sub { color:rgba(255,255,255,0.6); margin-bottom:48px; }
-.photo-showcase { display:grid; grid-template-columns:1.2fr 1fr; gap:24px; align-items:start; }
-.photo-main { border-radius:18px; overflow:hidden; position:relative; box-shadow:0 20px 60px rgba(0,0,0,0.4); background:rgba(255,255,255,0.06); min-height:280px; display:flex; align-items:center; justify-content:center; }
-.photo-main img { width:100%; height:100%; object-fit:cover; display:block; transition:transform 0.5s; }
-.photo-main:hover img { transform:scale(1.03); }
-.photo-fallback { color:rgba(255,255,255,0.3); font-size:14px; text-align:center; padding:60px 40px; }
-.photo-caption { position:absolute; bottom:0; left:0; right:0; padding:20px 24px; background:linear-gradient(to top,rgba(0,0,0,0.75),transparent); color:white; font-size:13px; line-height:1.5; }
-.photo-caption strong { display:block; font-size:15px; margin-bottom:3px; }
-.photo-side { display:flex; flex-direction:column; gap:18px; }
-.photo-block { background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.13); border-radius:14px; padding:24px 28px; }
-.quote-text { color:rgba(255,255,255,0.88); font-size:15px; line-height:1.85; font-style:italic; margin-bottom:20px; }
-.photo-stats-row { display:flex; gap:20px; }
-.photo-stat { text-align:center; }
-.photo-stat-num { font-family:'DM Serif Display',serif; font-size:28px; color:var(--accent); line-height:1; }
-.photo-stat-label { font-size:10px; color:rgba(255,255,255,0.5); margin-top:3px; }
-.client-label { color:rgba(255,255,255,0.55); font-size:11px; letter-spacing:0.08em; text-transform:uppercase; margin-bottom:12px; }
-.photo-chips { display:flex; flex-wrap:wrap; gap:7px; }
-.photo-chip { padding:5px 13px; border-radius:100px; font-size:12px; font-weight:500; background:rgba(0,180,216,0.18); color:var(--accent); border:1px solid rgba(0,180,216,0.28); }
+/* ── ACTION PHOTOS ── */
+#action-photos{background:var(--navy);padding:80px;}
+#action-photos .section-label{color:var(--accent);}
+#action-photos .section-label::after{background:var(--accent);}
+#action-photos .section-title{color:white;}
+#action-photos .section-sub{color:rgba(255,255,255,0.6);}
+.photo-showcase{display:grid;grid-template-columns:1.2fr 1fr;gap:22px;align-items:start;}
+.photo-main{border-radius:16px;overflow:hidden;position:relative;box-shadow:0 20px 60px rgba(0,0,0,0.4);background:rgba(255,255,255,0.06);min-height:260px;display:flex;align-items:center;justify-content:center;}
+.photo-main img{width:100%;height:100%;object-fit:cover;display:block;}
+.photo-fallback{color:rgba(255,255,255,0.3);font-size:13px;text-align:center;padding:60px 32px;}
+.photo-caption{position:absolute;bottom:0;left:0;right:0;padding:18px 22px;background:linear-gradient(to top,rgba(0,0,0,0.75),transparent);color:white;font-size:12.5px;line-height:1.5;}
+.photo-caption strong{display:block;font-size:14px;margin-bottom:3px;}
+.photo-side{display:flex;flex-direction:column;gap:16px;}
+.photo-block{background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:12px;padding:22px 24px;}
+.quote-text{color:rgba(255,255,255,0.88);font-size:14px;line-height:1.85;font-style:italic;margin-bottom:18px;}
+.photo-stats-row{display:flex;gap:16px;}
+.photo-stat{text-align:center;flex:1;}
+.photo-stat-num{font-family:'DM Serif Display',serif;font-size:26px;color:var(--accent);line-height:1;}
+.photo-stat-label{font-size:10px;color:rgba(255,255,255,0.5);margin-top:3px;}
+.client-label{color:rgba(255,255,255,0.5);font-size:11px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px;}
+.photo-chips{display:flex;flex-wrap:wrap;gap:7px;}
+.photo-chip{padding:5px 12px;border-radius:100px;font-size:11.5px;font-weight:500;background:rgba(0,180,216,0.18);color:var(--accent);border:1px solid rgba(0,180,216,0.28);}
 
-/* PROJECTS */
-#projects { background:var(--surface); }
-.project-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:22px; }
-.project-card { background:white; border-radius:16px; padding:30px; border:1px solid #e8edf3; transition:all 0.25s; }
-.project-card:hover { transform:translateY(-4px); box-shadow:0 20px 40px rgba(0,0,0,0.08); border-color:var(--blue-light); }
-.project-scale { display:inline-block; padding:5px 14px; border-radius:6px; font-family:'JetBrains Mono',monospace; font-size:14px; font-weight:500; background:linear-gradient(135deg,var(--navy),var(--blue)); color:white; margin-bottom:14px; }
-.project-title { font-size:17px; font-weight:700; color:var(--navy); margin-bottom:10px; }
-.project-desc { font-size:14px; color:var(--gray-500); line-height:1.8; margin-bottom:14px; }
-.project-role { font-size:13px; color:var(--blue); font-weight:600; }
+/* ── PROJECTS ── */
+#projects{background:white;}
+.project-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;}
+.project-card{background:var(--surf);border-radius:14px;padding:28px;border:1px solid #e8edf3;transition:all .25s;}
+.project-card:hover{transform:translateY(-4px);box-shadow:0 16px 36px rgba(0,0,0,0.08);border-color:var(--blue-light);}
+.project-scale{display:inline-block;padding:4px 12px;border-radius:6px;font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:500;background:linear-gradient(135deg,var(--navy),var(--blue));color:white;margin-bottom:12px;}
+.project-title{font-size:16px;font-weight:700;color:var(--navy);margin-bottom:8px;}
+.project-desc{font-size:13.5px;color:var(--g500);line-height:1.8;margin-bottom:12px;}
+.project-role{font-size:12.5px;color:var(--blue);font-weight:600;}
 
-/* SKILLS */
-#skills { background:white; }
-.skills-wrapper { display:grid; grid-template-columns:1fr 1fr; gap:56px; }
-.skill-group { margin-bottom:32px; }
-.skill-group-title { font-size:13px; font-weight:700; color:var(--navy); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:16px; padding-bottom:8px; border-bottom:2px solid var(--gray-100); }
-.skill-legend { display:flex; gap:16px; margin-bottom:20px; flex-wrap:wrap; }
-.legend-item { display:flex; align-items:center; gap:6px; font-size:12px; color:var(--gray-500); }
-.legend-dot { width:10px; height:10px; border-radius:3px; }
-.legend-dot.expert { background:var(--blue); }
-.legend-dot.proficient { background:#2a7a2a; }
-.legend-dot.familiar { background:#b35a00; }
-.skill-tags { display:flex; flex-wrap:wrap; gap:9px; }
-.skill-tag { padding:7px 15px; border-radius:7px; font-size:13px; font-weight:500; border:1.5px solid; transition:transform 0.2s; }
-.skill-tag:hover { transform:translateY(-2px); }
-.skill-tag.level-expert { background:#e8f4fd; color:var(--blue); border-color:#b3d4f5; }
-.skill-tag.level-proficient { background:#e8f5e8; color:#2a7a2a; border-color:#a8d8a8; }
-.skill-tag.level-familiar { background:#fef3e2; color:#b35a00; border-color:#f0c080; }
+/* ── SKILLS ── */
+#skills{background:var(--surf);}
+.skills-wrapper{display:grid;grid-template-columns:1fr 1fr;gap:52px;}
+.skill-group{margin-bottom:28px;}
+.skill-group-title{font-size:12.5px;font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:.08em;margin-bottom:14px;padding-bottom:8px;border-bottom:2px solid var(--g100);}
+.skill-legend{display:flex;gap:14px;margin-bottom:18px;flex-wrap:wrap;}
+.legend-item{display:flex;align-items:center;gap:5px;font-size:12px;color:var(--g500);}
+.legend-dot{width:9px;height:9px;border-radius:3px;}
+.legend-dot.expert{background:var(--blue);}
+.legend-dot.proficient{background:var(--green);}
+.legend-dot.familiar{background:var(--orange);}
+.skill-tags{display:flex;flex-wrap:wrap;gap:8px;}
+.skill-tag{padding:6px 14px;border-radius:7px;font-size:13px;font-weight:500;border:1.5px solid;transition:transform .2s;}
+.skill-tag:hover{transform:translateY(-2px);}
+.skill-tag.level-expert{background:#e8f4fd;color:var(--blue);border-color:#b3d4f5;}
+.skill-tag.level-proficient{background:#e8f5e8;color:var(--green);border-color:#a8d8a8;}
+.skill-tag.level-familiar{background:#fef3e2;color:var(--orange);border-color:#f0c080;}
+.lang-item{margin-bottom:16px;}
+.lang-header{display:flex;justify-content:space-between;margin-bottom:6px;}
+.lang-name{font-size:14px;color:var(--g700);font-weight:500;}
+.lang-score{font-size:11.5px;color:var(--blue);font-family:'JetBrains Mono',monospace;}
+.lang-bar{height:7px;background:var(--g100);border-radius:100px;overflow:hidden;}
+.lang-fill{height:100%;border-radius:100px;background:linear-gradient(90deg,var(--blue),var(--accent));width:0;transition:width 1.2s ease;}
+.cert-list{display:flex;flex-direction:column;gap:9px;}
+.cert-item{display:flex;align-items:center;gap:12px;padding:13px 15px;background:white;border-radius:9px;border:1px solid #e8edf3;}
+.cert-icon{font-size:19px;flex-shrink:0;}
+.cert-name{font-weight:600;color:var(--navy);font-size:13.5px;}
+.cert-sub{font-size:11.5px;color:var(--g500);margin-top:1px;}
 
-/* LANGUAGE */
-.lang-item { margin-bottom:18px; }
-.lang-header { display:flex; justify-content:space-between; margin-bottom:7px; }
-.lang-name { font-size:15px; color:var(--gray-700); font-weight:500; }
-.lang-score { font-size:12px; color:var(--blue); font-family:'JetBrains Mono',monospace; }
-.lang-bar { height:8px; background:var(--gray-100); border-radius:100px; overflow:hidden; }
-.lang-fill { height:100%; border-radius:100px; background:linear-gradient(90deg,var(--blue),var(--accent)); width:0; transition:width 1.2s ease; }
+/* ── CONTACT ── */
+#contact{background:linear-gradient(135deg,var(--navy) 0%,#1a3a6e 100%);color:white;text-align:center;}
+#contact .section-label{color:var(--accent);justify-content:center;}
+#contact .section-label::after{background:var(--accent);}
+#contact .section-title{color:white;}
+#contact .section-sub{color:rgba(255,255,255,0.65);margin:0 auto 44px;}
+.contact-grid{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;}
+.contact-card{background:rgba(255,255,255,0.09);border:1px solid rgba(255,255,255,0.15);border-radius:12px;padding:18px 26px;display:flex;align-items:center;gap:12px;text-decoration:none;color:white;transition:all .2s;min-width:190px;}
+.contact-card:hover{background:rgba(255,255,255,0.16);transform:translateY(-2px);}
+.contact-icon{font-size:21px;}
+.contact-label{font-size:10.5px;color:rgba(255,255,255,0.5);letter-spacing:.07em;text-transform:uppercase;margin-bottom:2px;}
+.contact-value{font-size:14px;font-weight:500;}
 
-/* CERTS */
-.cert-list { display:flex; flex-direction:column; gap:10px; }
-.cert-item { display:flex; align-items:center; gap:14px; padding:14px 16px; background:var(--surface); border-radius:10px; border:1px solid #e8edf3; }
-.cert-icon { font-size:20px; flex-shrink:0; }
-.cert-name { font-weight:600; color:var(--navy); font-size:14px; }
-.cert-sub { font-size:12px; color:var(--gray-500); margin-top:1px; }
+footer{background:#0a1929;color:rgba(255,255,255,0.35);text-align:center;padding:22px;font-size:11.5px;font-family:'JetBrains Mono',monospace;}
 
-/* CONTACT */
-#contact { background:linear-gradient(135deg,var(--navy) 0%,#1a3a6e 100%); color:white; text-align:center; }
-#contact .section-label { color:var(--accent); justify-content:center; }
-#contact .section-label::after { background:var(--accent); }
-#contact .section-title { color:white; }
-#contact .section-sub { color:rgba(255,255,255,0.65); margin:0 auto 48px; }
-.contact-grid { display:flex; justify-content:center; gap:16px; flex-wrap:wrap; }
-.contact-card { background:rgba(255,255,255,0.09); border:1px solid rgba(255,255,255,0.15); border-radius:14px; padding:20px 28px; display:flex; align-items:center; gap:14px; text-decoration:none; color:white; transition:all 0.2s; min-width:200px; }
-.contact-card:hover { background:rgba(255,255,255,0.16); transform:translateY(-2px); }
-.contact-icon { font-size:22px; }
-.contact-label { font-size:11px; color:rgba(255,255,255,0.5); letter-spacing:0.08em; text-transform:uppercase; margin-bottom:2px; }
-.contact-value { font-size:14px; font-weight:500; }
-
-/* FOOTER */
-footer { background:#0a1929; color:rgba(255,255,255,0.35); text-align:center; padding:24px; font-size:12px; font-family:'JetBrains Mono',monospace; }
-
-/* ANIMATIONS */
-@keyframes fadeUp { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
-@keyframes fadeIn { from{opacity:0} to{opacity:1} }
-.reveal { opacity:0; transform:translateY(20px); transition:opacity 0.6s ease,transform 0.6s ease; }
-.reveal.visible { opacity:1; transform:none; }
+/* ANIMATIONS — reveal is visible by default, JS adds animation */
+.reveal{transition:opacity .6s ease,transform .6s ease;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
 
 /* MOBILE */
-@media (max-width:960px) {
-  nav { padding:0 20px; }
-  .nav-links { display:none; }
-  .hero { grid-template-columns:1fr; }
-  .hero-right { display:none; }
-  .hero-left { padding:56px 24px; }
-  section, #action-photos { padding:60px 24px; }
-  .strength-grid { grid-template-columns:1fr; }
-  .photo-showcase { grid-template-columns:1fr; }
-  .project-grid { grid-template-columns:1fr; }
-  .skills-wrapper { grid-template-columns:1fr; gap:32px; }
-  .timeline::before { left:14px; }
-  .exp-item { padding-left:48px; }
-  .exp-dot { left:6px; }
+@media(max-width:960px){
+  nav{padding:0 20px;}
+  .nav-links{display:none;}
+  .hero{grid-template-columns:1fr;}
+  .hero-right{display:none;}
+  .hero-left{padding:52px 24px;}
+  section,#action-photos{padding:56px 24px;}
+  .metrics-banner{grid-template-columns:repeat(2,1fr);padding:32px 24px;}
+  .metric-item{border-right:none;border-bottom:1px solid rgba(255,255,255,0.08);}
+  .metric-item:last-child{border-bottom:none;}
+  .strength-grid,.cases-grid,.project-grid{grid-template-columns:1fr;}
+  .photo-showcase{grid-template-columns:1fr;}
+  .skills-wrapper{grid-template-columns:1fr;gap:28px;}
+  .timeline::before{left:14px;}
+  .exp-item{padding-left:46px;}
+  .exp-dot{left:6px;}
 }
 </style>
 </head>
@@ -220,8 +248,8 @@ footer { background:#0a1929; color:rgba(255,255,255,0.35); text-align:center; pa
   <ul class="nav-links">
     <li><a href="#strengths">核心能力</a></li>
     <li><a href="#experience">工作經歷</a></li>
+    <li><a href="#cases">專案案例</a></li>
     <li><a href="#action-photos">實戰現場</a></li>
-    <li><a href="#projects">代表專案</a></li>
     <li><a href="#skills">技能與證照</a></li>
     <li><a href="#contact">聯絡我</a></li>
   </ul>
@@ -238,15 +266,15 @@ footer { background:#0a1929; color:rgba(255,255,255,0.35); text-align:center; pa
       橫跨 IT 系統整合、通路產品管理與新能源產業，<br>
       從需求訪談到建置驗收，具備完整的 B2B 專案實戰能力。
     </p>
+    <div class="hero-summary">
+      <div class="summary-item"><span class="summary-dot"></span><span>5 年以上 B2B 技術專案與產品管理實務</span></div>
+      <div class="summary-item"><span class="summary-dot"></span><span>橫跨系統整合商・通路代理商・新能源新創三種組織型態</span></div>
+      <div class="summary-item"><span class="summary-dot"></span><span>需求訪談 → 方案規劃 → POC 驗證 → 建置驗收，全流程覆蓋</span></div>
+    </div>
     <div class="hero-tags">
-      <span class="tag">專案管理</span>
-      <span class="tag">產品規劃</span>
-      <span class="tag">B2B 解決方案</span>
-      <span class="tag">跨部門協調</span>
-      <span class="tag">IT Infra</span>
-      <span class="tag">能源產業</span>
-      <span class="tag">需求訪談</span>
-      <span class="tag">POC / UAT</span>
+      <span class="tag">專案管理</span><span class="tag">產品規劃</span><span class="tag">B2B 解決方案</span>
+      <span class="tag">跨部門協調</span><span class="tag">IT Infra</span><span class="tag">能源產業</span>
+      <span class="tag">需求訪談</span><span class="tag">POC / UAT</span>
     </div>
     <div class="hero-cta">
       <a href="#contact" class="btn-primary">📩 聯絡我</a>
@@ -255,25 +283,13 @@ footer { background:#0a1929; color:rgba(255,255,255,0.35); text-align:center; pa
   </div>
   <div class="hero-right">
     <div class="hero-photo" id="heroPhoto">
-      <img src="https://drive.google.com/thumbnail?id=1tnsOs7GO7Z1d6NA6-X0B2Oh34-ACZraH&sz=w400" alt="丁柏瑞">
+      <img id="heroImg" src="https://drive.google.com/thumbnail?id=1tnsOs7GO7Z1d6NA6-X0B2Oh34-ACZraH&sz=w400" alt="丁柏瑞 Ray Ding">
     </div>
     <div class="stat-grid">
-      <div class="stat-card">
-        <div class="stat-number">7<span>+</span></div>
-        <div class="stat-label">年工作年資</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-number">70<span>+</span></div>
-        <div class="stat-label">次 B2B 需求訪談</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-number">2.7<span>億</span></div>
-        <div class="stat-label">累積專案規模</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-number">5<span>~6年</span></div>
-        <div class="stat-label">跨產業實戰年資</div>
-      </div>
+      <div class="stat-card"><div class="stat-number">7<span>+年</span></div><div class="stat-label">總工作年資</div></div>
+      <div class="stat-card"><div class="stat-number">70<span>+</span></div><div class="stat-label">次 B2B 需求訪談</div></div>
+      <div class="stat-card"><div class="stat-number">2.7<span>億</span></div><div class="stat-label">累積專案規模</div></div>
+      <div class="stat-card"><div class="stat-number">5<span>~6年</span></div><div class="stat-label">跨產業 PM 年資</div></div>
     </div>
     <div class="hero-quote">
       <p>「習慣以終為始，先把事情想清楚再做紮實。重視邏輯架構與節點控管，將不確定性拆解成可控項目。」</p>
@@ -281,42 +297,27 @@ footer { background:#0a1929; color:rgba(255,255,255,0.35); text-align:center; pa
   </div>
 </section>
 
+<!-- METRICS BANNER -->
+<div class="metrics-banner">
+  <div class="metric-item"><div class="metric-num">2.7<span>億</span></div><div class="metric-label">累積主導專案規模</div><div class="metric-context">含 2.2億 最大單案</div></div>
+  <div class="metric-item"><div class="metric-num">70<span>+</span></div><div class="metric-label">B2B 需求訪談場次</div><div class="metric-context">企業・建商・製造業</div></div>
+  <div class="metric-item"><div class="metric-num">11<span>場</span></div><div class="metric-label">培訓主講執行場次</div><div class="metric-context">逾350人次・393直播</div></div>
+  <div class="metric-item"><div class="metric-num">3<span>段</span></div><div class="metric-label">跨產業 PM 實戰經歷</div><div class="metric-context">IT・通路・新能源</div></div>
+  <div class="metric-item"><div class="metric-num">5<span>年+</span></div><div class="metric-label">B2B 技術專案核心年資</div><div class="metric-context">端到端全流程覆蓋</div></div>
+</div>
+
 <!-- STRENGTHS -->
 <section id="strengths">
   <div class="section-label">Core Strengths</div>
   <h2 class="section-title">核心競爭優勢</h2>
   <p class="section-sub">橫跨三個產業所淬煉出的能力組合，讓我能快速銜接技術與商務兩端的需求。</p>
   <div class="strength-grid">
-    <div class="strength-card reveal">
-      <span class="strength-icon">🔍</span>
-      <div class="strength-title">需求整合與技術轉譯</div>
-      <div class="strength-desc">能將客戶模糊的業務痛點拆解為可執行的技術規格，擔任工程端與商務端的溝通橋樑。具備 70+ 次 B2B 需求訪談實務，涵蓋企業、建商、製造業等多元場域。</div>
-    </div>
-    <div class="strength-card reveal">
-      <span class="strength-icon">📋</span>
-      <div class="strength-title">專案時程規劃與風險控管</div>
-      <div class="strength-desc">從目標回推執行路徑，提前盤點風險變數，確保每個環節真正落地。熟悉 POC 驗證、UAT 測試與現場驗收完整流程，具大型跨國專案協調經驗。</div>
-    </div>
-    <div class="strength-card reveal">
-      <span class="strength-icon">🤝</span>
-      <div class="strength-title">跨部門協作與利害關係人管理</div>
-      <div class="strength-desc">熟悉業務、工程、法規、原廠、客戶等多方角色的溝通模式。能先釐清對方真正目標，再找到各方都能接受的推進方式，降低協作摩擦。</div>
-    </div>
-    <div class="strength-card reveal">
-      <span class="strength-icon">📦</span>
-      <div class="strength-title">產品操盤與通路管理</div>
-      <div class="strength-desc">具備從產品引進、訂價策略、備貨規劃、行銷推廣到售後服務的完整操盤能力。獨立管理過儲存陣列、IPC 工控、充電樁等多條產品線。</div>
-    </div>
-    <div class="strength-card reveal">
-      <span class="strength-icon">⚡</span>
-      <div class="strength-title">新能源與 IT Infra 雙領域知識</div>
-      <div class="strength-desc">精通 IT Infra（伺服器、SAN 儲存、HCI）與能源產業（AC/DC 充電樁、EMS 能源管控、V2G）兩大技術領域，能快速切入技術討論並提出可行方案。</div>
-    </div>
-    <div class="strength-card reveal">
-      <span class="strength-icon">📣</span>
-      <div class="strength-title">B2B 行銷與培訓策劃</div>
-      <div class="strength-desc">獨立統籌並擔任主講人，執行聯強 × Seagate 全台 11 場經銷商培訓，單場直播觸及 393 人次。具備從策略規劃、EDM 設計到現場主持的完整行銷執行能力。</div>
-    </div>
+    <div class="strength-card reveal"><span class="strength-icon">🔍</span><div class="strength-title">需求整合與技術轉譯</div><div class="strength-desc">能將客戶模糊的業務痛點拆解為可執行的技術規格，擔任工程端與商務端的溝通橋樑。具備 70+ 次 B2B 需求訪談實務，涵蓋企業、建商、製造業等多元場域。</div></div>
+    <div class="strength-card reveal"><span class="strength-icon">📋</span><div class="strength-title">專案時程規劃與風險控管</div><div class="strength-desc">從目標回推執行路徑，提前盤點風險變數，確保每個環節真正落地。熟悉 POC 驗證、UAT 測試與現場驗收完整流程，具大型跨國專案協調經驗。</div></div>
+    <div class="strength-card reveal"><span class="strength-icon">🤝</span><div class="strength-title">跨部門協作與利害關係人管理</div><div class="strength-desc">熟悉業務、工程、法規、原廠、客戶等多方角色的溝通模式。能先釐清對方真正目標，再找到各方都能接受的推進方式，降低協作摩擦。</div></div>
+    <div class="strength-card reveal"><span class="strength-icon">📦</span><div class="strength-title">產品操盤與通路管理</div><div class="strength-desc">具備從產品引進、訂價策略、備貨規劃、行銷推廣到售後服務的完整操盤能力。獨立管理過儲存陣列、IPC 工控、充電樁等多條產品線。</div></div>
+    <div class="strength-card reveal"><span class="strength-icon">⚡</span><div class="strength-title">新能源與 IT Infra 雙領域知識</div><div class="strength-desc">精通 IT Infra（伺服器、SAN 儲存、HCI）與能源產業（AC/DC 充電樁、EMS 能源管控、V2G）兩大技術領域，能快速切入技術討論並提出可行方案。</div></div>
+    <div class="strength-card reveal"><span class="strength-icon">📣</span><div class="strength-title">B2B 行銷與培訓策劃</div><div class="strength-desc">獨立統籌並擔任主講人，執行聯強 × Seagate 全台 11 場經銷商培訓，單場直播觸及 393 人次。具備從策略規劃、EDM 設計到現場主持的完整行銷執行能力。</div></div>
   </div>
 </section>
 
@@ -332,24 +333,22 @@ footer { background:#0a1929; color:rgba(255,255,255,0.35); text-align:center; pa
       <div class="exp-content">
         <span class="exp-logo-badge badge-star">★ 星舟快充</span>
         <div class="exp-header">
-          <div>
-            <div class="exp-company">星舟快充股份有限公司（泓德能源集團子公司）・光電產業</div>
-            <div class="exp-role">通路業務專員</div>
-          </div>
+          <div><div class="exp-company">星舟快充股份有限公司（泓德能源集團子公司）・光電產業</div><div class="exp-role">通路業務專員</div></div>
           <div class="exp-period">2024/04 — 2025/11　1年8個月</div>
         </div>
         <div class="exp-achievements">
           <div class="achievement">針對企業、建商、社區執行 <strong>70+ 次 B2B 需求訪談</strong>，完整涵蓋需求釐清、場域盤點、提案互動到建置驗收全流程</div>
-          <div class="achievement">主責台電 V2G 專案需求釐清與進度追蹤，擔任客戶端與技術端溝通橋樑，協調跨單位執行</div>
+          <div class="achievement">主責台電 V2G 專案需求釐清與進度追蹤，協調星舟 × 台電 × Nuvve 三方合作，擔任客戶端與技術端溝通橋樑</div>
           <div class="achievement">參與 EMS 系統與地端 IPC 功能提案與驗證，協調工程與客戶端需求確保規格如期推進</div>
           <div class="achievement">出席台灣國際智慧能源週展會，接洽上市建商、連鎖五星飯店高管、車廠等潛在客戶</div>
         </div>
+        <div class="exp-metric-row">
+          <div class="exp-metric"><div class="exp-metric-num">70<em>+</em></div><div class="exp-metric-desc">B2B 需求訪談</div></div>
+          <div class="exp-metric"><div class="exp-metric-num">3<em>方</em></div><div class="exp-metric-desc">V2G 跨組織協作</div></div>
+          <div class="exp-metric"><div class="exp-metric-num">7<em>kW</em></div><div class="exp-metric-desc">～180kW 全場域選型</div></div>
+        </div>
         <div class="exp-highlights">
-          <span class="highlight-chip">AC/DC 充電樁</span>
-          <span class="highlight-chip">EMS 能源管控</span>
-          <span class="highlight-chip">IPC 工控</span>
-          <span class="highlight-chip">V2G 專案</span>
-          <span class="highlight-chip">ESG 解決方案</span>
+          <span class="highlight-chip">AC/DC 充電樁</span><span class="highlight-chip">EMS 能源管控</span><span class="highlight-chip">IPC 工控</span><span class="highlight-chip">V2G 專案</span><span class="highlight-chip">ESG 解決方案</span>
         </div>
       </div>
     </div>
@@ -359,10 +358,7 @@ footer { background:#0a1929; color:rgba(255,255,255,0.35); text-align:center; pa
       <div class="exp-content">
         <span class="exp-logo-badge badge-synnex">聯強國際 SYNNEX</span>
         <div class="exp-header">
-          <div>
-            <div class="exp-company">聯強國際股份有限公司・電子通訊/電腦週邊批發業 500人以上</div>
-            <div class="exp-role">產品規劃資深專員（PM）</div>
-          </div>
+          <div><div class="exp-company">聯強國際股份有限公司・電子通訊/電腦週邊批發業 500人以上</div><div class="exp-role">產品規劃資深專員（PM）</div></div>
           <div class="exp-period">2022/07 — 2024/02　1年8個月</div>
         </div>
         <div class="exp-achievements">
@@ -371,12 +367,14 @@ footer { background:#0a1929; color:rgba(255,255,255,0.35); text-align:center; pa
           <div class="achievement">建立安全庫存機制與庫存調配策略，控管 SKU 預算、計算庫齡成本，有效降低呆庫風險</div>
           <div class="achievement">持續追蹤競品動態與通路價格走勢，協助品牌在亞太代理市場維持競爭優勢</div>
         </div>
+        <div class="exp-metric-row">
+          <div class="exp-metric"><div class="exp-metric-num">11<em>場</em></div><div class="exp-metric-desc">全台培訓主講</div></div>
+          <div class="exp-metric"><div class="exp-metric-num">350<em>+</em></div><div class="exp-metric-desc">累積培訓人次</div></div>
+          <div class="exp-metric"><div class="exp-metric-num">393</div><div class="exp-metric-desc">單場直播觸及</div></div>
+          <div class="exp-metric"><div class="exp-metric-num">2<em>線</em></div><div class="exp-metric-desc">獨立操盤產品線</div></div>
+        </div>
         <div class="exp-highlights">
-          <span class="highlight-chip">SAN 企業級儲存</span>
-          <span class="highlight-chip">IPC 工控電腦</span>
-          <span class="highlight-chip">通路管理</span>
-          <span class="highlight-chip">產品操盤</span>
-          <span class="highlight-chip">庫存控管</span>
+          <span class="highlight-chip">SAN 企業級儲存</span><span class="highlight-chip">IPC 工控電腦</span><span class="highlight-chip">通路管理</span><span class="highlight-chip">產品操盤</span><span class="highlight-chip">庫存控管</span>
         </div>
       </div>
     </div>
@@ -386,27 +384,117 @@ footer { background:#0a1929; color:rgba(255,255,255,0.35); text-align:center; pa
       <div class="exp-content">
         <span class="exp-logo-badge badge-xinda">訊達電腦 DIMENSION</span>
         <div class="exp-header">
-          <div>
-            <div class="exp-company">訊達電腦股份有限公司・電腦系統整合服務業 100~500人</div>
-            <div class="exp-role">解決方案協銷專員暨儲備幹部</div>
-          </div>
+          <div><div class="exp-company">訊達電腦股份有限公司・電腦系統整合服務業 100~500人</div><div class="exp-role">解決方案協銷專員暨儲備幹部</div></div>
           <div class="exp-period">2020/12 — 2022/06　1年7個月</div>
         </div>
         <div class="exp-achievements">
           <div class="achievement">以技術顧問身份主導客戶需求訪談，提供雲地端整合規劃建議（Server、Storage、NAS、HCI），負責 Joint call 與 POC 功能測試驗證</div>
           <div class="achievement">主責台積電、跨國企業、連鎖超商等指標性客戶專案，合計執行專案規模逾 <strong>2.7 億</strong></div>
-          <div class="achievement">參與 2.2 億跨國 HPE 機房建置案，擔任需求整合與廠商協調窗口</div>
+          <div class="achievement">參與 2.2 億跨國 HPE 機房建置案，擔任需求整合與廠商協調窗口，負責設備規格釐清與進度追蹤</div>
           <div class="achievement">推動庫齡分析機制與重要供應商時效管理，參與專業人員招募與在職訓練規劃</div>
         </div>
+        <div class="exp-metric-row">
+          <div class="exp-metric"><div class="exp-metric-num">2.7<em>億</em></div><div class="exp-metric-desc">累積主導專案規模</div></div>
+          <div class="exp-metric"><div class="exp-metric-num">2.2<em>億</em></div><div class="exp-metric-desc">最大單案 HPE 機房</div></div>
+          <div class="exp-metric"><div class="exp-metric-num">500<em>萬</em></div><div class="exp-metric-desc">台積電（連續兩年）</div></div>
+          <div class="exp-metric"><div class="exp-metric-num">200<em>萬</em></div><div class="exp-metric-desc">連鎖超商 HCI</div></div>
+        </div>
         <div class="exp-highlights">
-          <span class="highlight-chip">機架式伺服器</span>
-          <span class="highlight-chip">儲存陣列</span>
-          <span class="highlight-chip">HCI</span>
-          <span class="highlight-chip">台積電</span>
-          <span class="highlight-chip">HPE</span>
+          <span class="highlight-chip">機架式伺服器</span><span class="highlight-chip">儲存陣列</span><span class="highlight-chip">HCI</span><span class="highlight-chip">台積電</span><span class="highlight-chip">HPE</span>
         </div>
       </div>
     </div>
+
+  </div>
+</section>
+
+<!-- CASE STUDIES -->
+<section id="cases">
+  <div class="section-label">Case Studies</div>
+  <h2 class="section-title">PM 專案案例</h2>
+  <p class="section-sub">以下為具代表性的真實案例，說明我如何定義問題、推動解決、並帶來可量化的成果。</p>
+  <div class="cases-grid">
+
+    <div class="case-card reveal">
+      <div class="case-header">
+        <span class="case-tag tag-it">IT Infra ・ 系統整合</span>
+        <div class="case-title">跨國企業 HPE 機房建置<br>需求整合與進度控管</div>
+        <div class="case-scale">專案規模 2.2 億・2021 ─ 訊達電腦</div>
+      </div>
+      <div class="case-body">
+        <div class="case-section-label">面對的問題</div>
+        <div class="case-text">客戶為跨國企業，機房建置涉及多國採購標準與本地法規，設備規格頻繁變動，原廠與客戶端的需求認知落差大，導致報價與交期反覆確認、溝通成本高。</div>
+        <div class="case-section-label">我的做法</div>
+        <div class="case-text">擔任需求整合的單一窗口，建立規格確認 SOP，每次設備異動均同步更新需求文件與報價單，並定期召集原廠、客戶、採購三方進行進度對齊，將溝通節點明確化，避免資訊落差在後端放大為交期風險。</div>
+        <div class="case-section-label">帶來的成果</div>
+        <div class="case-result">跨國採購案順利完成交付，全案未出現設備規格爭議或重工情況</div>
+        <div class="case-result">建立的需求確認流程，後續被內部沿用於其他大型採購案</div>
+        <div class="case-chips">
+          <span class="case-chip">HPE</span><span class="case-chip">多方協調</span><span class="case-chip">規格管理</span><span class="case-chip">SOP 建立</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="case-card reveal">
+      <div class="case-header">
+        <span class="case-tag tag-it">IT Infra ・ 製造業</span>
+        <div class="case-title">台積電年度設備部署<br>連續兩年主責執行</div>
+        <div class="case-scale">專案規模 500 萬 × 2 年・2021～2022 ─ 訊達電腦</div>
+      </div>
+      <div class="case-body">
+        <div class="case-section-label">面對的問題</div>
+        <div class="case-text">台積電設備導入有嚴格的安全管制與交期要求，設備交付時間視廠端排程而定，任何延誤都可能影響產線。供應商端備貨壓力大，需提前協調調度。</div>
+        <div class="case-section-label">我的做法</div>
+        <div class="case-text">與客戶採購窗口緊密對接，提前 4～6 週確認設備型號與數量，並與原廠協調庫存優先配置。針對台積電的管制進場規範，製作設備清單與進場文件，確保驗收流程符合廠商要求。</div>
+        <div class="case-section-label">帶來的成果</div>
+        <div class="case-result">連續兩年如期完成設備交付與驗收，零延誤紀錄</div>
+        <div class="case-result">取得客戶高度信任，成為台積電指定合作窗口</div>
+        <div class="case-chips">
+          <span class="case-chip">台積電</span><span class="case-chip">設備調度</span><span class="case-chip">進場管理</span><span class="case-chip">交付驗收</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="case-card reveal">
+      <div class="case-header">
+        <span class="case-tag tag-pm">產品管理 ・ B2B 行銷</span>
+        <div class="case-title">聯強 × Seagate 全台經銷商<br>培訓計劃獨立統籌</div>
+        <div class="case-scale">11 場・350+ 人次・2023 ─ 聯強國際</div>
+      </div>
+      <div class="case-body">
+        <div class="case-section-label">面對的問題</div>
+        <div class="case-text">新產品線引進後，通路端（經銷商）對產品認識不足，導致銷售推廣效果有限。需在有限預算內建立有效的知識傳遞機制，同時提升品牌能見度。</div>
+        <div class="case-section-label">我的做法</div>
+        <div class="case-text">獨立規劃活動架構與 Seminar 議程，設計系列 EDM 精準邀約，協調原廠資源出席強化說服力。針對不同受眾（業務、技術、管理）調整內容深度，並在現場主講 Q&A，將產品賣點轉化為經銷商可直接使用的銷售話術。</div>
+        <div class="case-section-label">帶來的成果</div>
+        <div class="case-result">合計執行 11 場，實體逾 100 人次，線上直播單場觸及 393 人</div>
+        <div class="case-result">培訓後經銷商主動詢價與提案頻率明顯提升，品牌曝光延伸至數位通路</div>
+        <div class="case-chips">
+          <span class="case-chip">Seagate</span><span class="case-chip">活動策劃</span><span class="case-chip">主講人</span><span class="case-chip">EDM</span><span class="case-chip">直播執行</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="case-card reveal">
+      <div class="case-header">
+        <span class="case-tag tag-energy">新能源 ・ 場域規劃</span>
+        <div class="case-title">企業充電場域 ESG 需求<br>訪談與解決方案規劃</div>
+        <div class="case-scale">70+ 次訪談・多類型場域・2024～2025 ─ 星舟快充</div>
+      </div>
+      <div class="case-body">
+        <div class="case-section-label">面對的問題</div>
+        <div class="case-text">企業客戶對充電樁的需求來自法規合規、ESG 減碳報告、場域投資活化等不同動機，卻往往缺乏對技術規格（AC/DC 選型、負載管理、EMS 整合）的基礎認識，導致需求模糊、決策緩慢。</div>
+        <div class="case-section-label">我的做法</div>
+        <div class="case-text">建立標準化需求訪談流程：先釐清客戶的核心驅動力（法規/ESG/投資），再結合場域特性（用電容量、停車位數、使用族群）提出對應選型建議，並協助試算 ESG 碳排效益供客戶作為內部提案依據。</div>
+        <div class="case-section-label">帶來的成果</div>
+        <div class="case-result">協助多家上市建商完成充電場域規劃提案，進入合作建置階段</div>
+        <div class="case-result">建立的訪談 SOP 成為團隊標準流程，縮短新人上手時間</div>
+        <div class="case-chips">
+          <span class="case-chip">ESG 減碳</span><span class="case-chip">場域選型</span><span class="case-chip">AC/DC</span><span class="case-chip">EMS</span><span class="case-chip">SOP 建立</span>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -427,78 +515,19 @@ footer { background:#0a1929; color:rgba(255,255,255,0.35); text-align:center; pa
       <div class="photo-block">
         <div class="quote-text">「我習慣在展會上先聽客戶說，再提方案。真正的需求往往藏在第一句話的背後。」</div>
         <div class="photo-stats-row">
-          <div class="photo-stat">
-            <div class="photo-stat-num">70+</div>
-            <div class="photo-stat-label">次 B2B 需求訪談</div>
-          </div>
-          <div class="photo-stat">
-            <div class="photo-stat-num">11</div>
-            <div class="photo-stat-label">場培訓主講</div>
-          </div>
-          <div class="photo-stat">
-            <div class="photo-stat-num">393</div>
-            <div class="photo-stat-label">直播觸及人次</div>
-          </div>
+          <div class="photo-stat"><div class="photo-stat-num">70+</div><div class="photo-stat-label">次 B2B 需求訪談</div></div>
+          <div class="photo-stat"><div class="photo-stat-num">11</div><div class="photo-stat-label">場培訓主講</div></div>
+          <div class="photo-stat"><div class="photo-stat-num">393</div><div class="photo-stat-label">直播觸及人次</div></div>
         </div>
       </div>
       <div class="photo-block">
         <div class="client-label">接觸過的客戶類型</div>
         <div class="photo-chips">
-          <span class="photo-chip">上市建商</span>
-          <span class="photo-chip">連鎖五星飯店</span>
-          <span class="photo-chip">車廠總代理</span>
-          <span class="photo-chip">台積電</span>
-          <span class="photo-chip">跨國企業</span>
-          <span class="photo-chip">連鎖超商</span>
-          <span class="photo-chip">台電</span>
-          <span class="photo-chip">社區管委會</span>
+          <span class="photo-chip">上市建商</span><span class="photo-chip">連鎖五星飯店</span><span class="photo-chip">車廠總代理</span>
+          <span class="photo-chip">台積電</span><span class="photo-chip">跨國企業</span><span class="photo-chip">連鎖超商</span>
+          <span class="photo-chip">台電</span><span class="photo-chip">社區管委會</span>
         </div>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- PROJECTS -->
-<section id="projects">
-  <div class="section-label">Key Projects</div>
-  <h2 class="section-title">代表專案成果</h2>
-  <p class="section-sub">從百萬到億元規模，跨越製造業、跨國企業、能源產業的實戰紀錄。</p>
-  <div class="project-grid">
-    <div class="project-card reveal">
-      <div class="project-scale">💼 2.2 億</div>
-      <div class="project-title">跨國企業 HPE 機房建置專案</div>
-      <div class="project-desc">迄今最大規模跨國機房建置案，擔任需求整合與廠商協調窗口，負責設備規格釐清、進度追蹤與專案執行協調，確保大型跨國採購案順利落地。</div>
-      <div class="project-role">📌 角色：需求整合窗口・廠商協調・進度追蹤</div>
-    </div>
-    <div class="project-card reveal">
-      <div class="project-scale">🏭 500 萬</div>
-      <div class="project-title">台積電年度大規模設備部署（連續兩年）</div>
-      <div class="project-desc">2021～2022 年連續兩年負責台積電設備導入專案，主責需求確認、設備調度與交付驗收，展現頂尖製造業客戶的服務能力與精準執行力。</div>
-      <div class="project-role">📌 角色：主責 PM・設備調度・交付驗收</div>
-    </div>
-    <div class="project-card reveal">
-      <div class="project-scale">🏪 200 萬</div>
-      <div class="project-title">連鎖超商 HCI 系統架構建置</div>
-      <div class="project-desc">協助規劃執行連鎖超商總部系統架構升級，完成需求訪談、商務提案與建置驗收事宜，確保新架構符合連鎖體系的可擴展性需求。</div>
-      <div class="project-role">📌 角色：需求訪談・方案規劃・建置驗收</div>
-    </div>
-    <div class="project-card reveal">
-      <div class="project-scale">⚡ 台電 V2G</div>
-      <div class="project-title">台電 V2G 示範案場協作專案</div>
-      <div class="project-desc">主責台電 V2G 示範場域需求釐清與進度追蹤，協調星舟 × 台電 × Nuvve 三方合作，推動充電樁與電網雙向儲能技術的落地應用。</div>
-      <div class="project-role">📌 角色：需求釐清・多方協調・進度追蹤</div>
-    </div>
-    <div class="project-card reveal">
-      <div class="project-scale">📢 11 場培訓</div>
-      <div class="project-title">聯強 × Seagate 全台經銷商培訓計劃</div>
-      <div class="project-desc">獨立統籌並擔任主講人，執行 3 場實體研討會（逾 100 人次）、3 場線上直播（單場觸及 393 人）、5 場區域內部訓練，合計 11 場、逾 350 人次。</div>
-      <div class="project-role">📌 角色：專案統籌・活動策劃・主講人</div>
-    </div>
-    <div class="project-card reveal">
-      <div class="project-scale">🏗️ 展會商務</div>
-      <div class="project-title">台灣國際智慧能源週展覽接洽</div>
-      <div class="project-desc">出席南港展覽館，擔任充電樁與 EMS 解說互動窗口，接洽上市建商、五星飯店高管、車廠等潛在客戶，展後促成建商充電場域建置合作。</div>
-      <div class="project-role">📌 角色：展會接洽・商務提案・客戶開發</div>
     </div>
   </div>
 </section>
@@ -552,11 +581,11 @@ footer { background:#0a1929; color:rgba(255,255,255,0.35); text-align:center; pa
       <div class="skill-group">
         <div class="skill-group-title">常用工具</div>
         <div class="skill-tags">
+          <span class="skill-tag level-expert">MS Office / PowerPoint</span>
           <span class="skill-tag level-proficient">Redmine</span>
           <span class="skill-tag level-proficient">Xmind</span>
           <span class="skill-tag level-proficient">Draw.io</span>
           <span class="skill-tag level-proficient">NotebookLM</span>
-          <span class="skill-tag level-expert">MS Office / PowerPoint</span>
         </div>
       </div>
     </div>
@@ -564,58 +593,25 @@ footer { background:#0a1929; color:rgba(255,255,255,0.35); text-align:center; pa
       <div class="skill-group">
         <div class="skill-group-title">語言能力</div>
         <div class="lang-item">
-          <div class="lang-header">
-            <span class="lang-name">中文（母語）</span>
-            <span class="lang-score">精通</span>
-          </div>
+          <div class="lang-header"><span class="lang-name">中文（母語）</span><span class="lang-score">精通</span></div>
           <div class="lang-bar"><div class="lang-fill" data-width="100"></div></div>
         </div>
         <div class="lang-item">
-          <div class="lang-header">
-            <span class="lang-name">英文・TOEIC 770（最高 850）</span>
-            <span class="lang-score">中高級・可書信/簡報</span>
-          </div>
+          <div class="lang-header"><span class="lang-name">英文・TOEIC 770（最高 850）</span><span class="lang-score">中高級・可書信/簡報</span></div>
           <div class="lang-bar"><div class="lang-fill" data-width="75"></div></div>
         </div>
         <div class="lang-item">
-          <div class="lang-header">
-            <span class="lang-name">日文・JLPT N5</span>
-            <span class="lang-score">基礎</span>
-          </div>
+          <div class="lang-header"><span class="lang-name">日文・JLPT N5</span><span class="lang-score">基礎</span></div>
           <div class="lang-bar"><div class="lang-fill" data-width="18"></div></div>
         </div>
       </div>
       <div class="skill-group">
         <div class="skill-group-title">證照與認證</div>
         <div class="cert-list">
-          <div class="cert-item">
-            <span class="cert-icon">🏆</span>
-            <div>
-              <div class="cert-name">HPE Sales Certified</div>
-              <div class="cert-sub">Edge-to-Cloud Solutions｜Hewlett Packard Enterprise</div>
-            </div>
-          </div>
-          <div class="cert-item">
-            <span class="cert-icon">🏆</span>
-            <div>
-              <div class="cert-name">Seagate SCSP &amp; SCSE Certified</div>
-              <div class="cert-sub">Storage Certified Sales Professional｜Seagate</div>
-            </div>
-          </div>
-          <div class="cert-item">
-            <span class="cert-icon">🎤</span>
-            <div>
-              <div class="cert-name">Dale Carnegie 卡內基訓練</div>
-              <div class="cert-sub">溝通與人際關係・Certificate of Achievement</div>
-            </div>
-          </div>
-          <div class="cert-item">
-            <span class="cert-icon">🎓</span>
-            <div>
-              <div class="cert-name">私立大同大學・事業經營所 碩士</div>
-              <div class="cert-sub">大學部：事業經營系｜畢業於 2016</div>
-            </div>
-          </div>
+          <div class="cert-item"><span class="cert-icon">🏆</span><div><div class="cert-name">HPE Sales Certified</div><div class="cert-sub">Edge-to-Cloud Solutions｜Hewlett Packard Enterprise</div></div></div>
+          <div class="cert-item"><span class="cert-icon">🏆</span><div><div class="cert-name">Seagate SCSP &amp; SCSE Certified</div><div class="cert-sub">Storage Certified Sales Professional｜Seagate</div></div></div>
+          <div class="cert-item"><span class="cert-icon">🎤</span><div><div class="cert-name">Dale Carnegie 卡內基訓練</div><div class="cert-sub">溝通與人際關係・Certificate of Achievement</div></div></div>
+          <div class="cert-item"><span class="cert-icon">🎓</span><div><div class="cert-name">私立大同大學・事業經營所 碩士</div><div class="cert-sub">大學部：事業經營系｜畢業於 2016</div></div></div>
         </div>
       </div>
     </div>
@@ -626,36 +622,12 @@ footer { background:#0a1929; color:rgba(255,255,255,0.35); text-align:center; pa
 <section id="contact">
   <div class="section-label">Get In Touch</div>
   <h2 class="section-title">歡迎與我聯繫</h2>
-  <p class="section-sub">目標職類：產品管理師・專案經理・產品企劃<br>歡迎來電、來信，或直接傳送這個頁面給用人主管</p>
+  <p class="section-sub">目標職類：產品管理師・專案經理・產品企劃<br>歡迎來電、來信，或直接將這個頁面轉傳給用人主管</p>
   <div class="contact-grid">
-    <a href="tel:0937425692" class="contact-card">
-      <span class="contact-icon">📱</span>
-      <div>
-        <div class="contact-label">手機</div>
-        <div class="contact-value">0937-425-692</div>
-      </div>
-    </a>
-    <a href="mailto:ray90302@gmail.com" class="contact-card">
-      <span class="contact-icon">✉️</span>
-      <div>
-        <div class="contact-label">Email</div>
-        <div class="contact-value">ray90302@gmail.com</div>
-      </div>
-    </a>
-    <div class="contact-card">
-      <span class="contact-icon">📍</span>
-      <div>
-        <div class="contact-label">所在地</div>
-        <div class="contact-value">台北市士林區</div>
-      </div>
-    </div>
-    <div class="contact-card">
-      <span class="contact-icon">💼</span>
-      <div>
-        <div class="contact-label">工作性質</div>
-        <div class="contact-value">全職・可配合遠端</div>
-      </div>
-    </div>
+    <a href="tel:0937425692" class="contact-card"><span class="contact-icon">📱</span><div><div class="contact-label">手機</div><div class="contact-value">0937-425-692</div></div></a>
+    <a href="mailto:ray90302@gmail.com" class="contact-card"><span class="contact-icon">✉️</span><div><div class="contact-label">Email</div><div class="contact-value">ray90302@gmail.com</div></div></a>
+    <div class="contact-card"><span class="contact-icon">📍</span><div><div class="contact-label">所在地</div><div class="contact-value">台北市士林區</div></div></div>
+    <div class="contact-card"><span class="contact-icon">💼</span><div><div class="contact-label">工作性質</div><div class="contact-value">全職・可配合遠端</div></div></div>
   </div>
 </section>
 
@@ -664,66 +636,50 @@ footer { background:#0a1929; color:rgba(255,255,255,0.35); text-align:center; pa
 </footer>
 
 <script>
-(function() {
-  // 照片載入失敗備援
-  var heroImg = document.querySelector('#heroPhoto img');
-  if (heroImg) {
-    heroImg.onerror = function() {
-      this.parentElement.innerHTML = '<div class="hero-photo-fallback">👤</div>';
-    };
-  }
-
-  var actionImg = document.getElementById('actionImg');
-  if (actionImg) {
-    actionImg.onerror = function() {
-      var container = document.getElementById('photoMain');
-      if (container) {
-        this.remove();
-        var fb = document.createElement('div');
-        fb.className = 'photo-fallback';
-        fb.textContent = '📷 展會現場照片';
-        container.insertBefore(fb, container.firstChild);
-      }
-    };
-  }
-
-  // Scroll reveal
-  var reveals = document.querySelectorAll('.reveal');
-  if ('IntersectionObserver' in window) {
-    var revealObs = new IntersectionObserver(function(entries) {
-      entries.forEach(function(entry, i) {
-        if (entry.isIntersecting) {
-          setTimeout(function() {
-            entry.target.classList.add('visible');
-          }, i * 80);
-          revealObs.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.08 });
-    reveals.forEach(function(el) { revealObs.observe(el); });
-  } else {
-    reveals.forEach(function(el) { el.classList.add('visible'); });
-  }
-
-  // Language bar animation
-  var langFills = document.querySelectorAll('.lang-fill');
-  if ('IntersectionObserver' in window) {
-    var langObs = new IntersectionObserver(function(entries) {
-      entries.forEach(function(entry) {
-        if (entry.isIntersecting) {
-          var w = entry.target.getAttribute('data-width') || '0';
-          entry.target.style.width = w + '%';
-          langObs.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.3 });
-    langFills.forEach(function(el) { langObs.observe(el); });
-  } else {
-    langFills.forEach(function(el) {
-      var w = el.getAttribute('data-width') || '0';
-      el.style.width = w + '%';
+(function(){
+  // 圖片備援（不用 onerror 屬性，改用 JS）
+  function imgFallback(imgId, containerId, fallbackHTML){
+    var img = document.getElementById(imgId);
+    if(!img) return;
+    img.addEventListener('error', function(){
+      var c = document.getElementById(containerId);
+      if(c) c.innerHTML = fallbackHTML;
     });
   }
+  imgFallback('heroImg','heroPhoto','<div style="font-size:36px;color:rgba(255,255,255,0.5)">👤</div>');
+  imgFallback('actionImg','photoMain','<div class="photo-fallback">📷 展會現場照片</div>');
+
+  // Scroll reveal — 預設可見，捲動時加動畫
+  var els = document.querySelectorAll('.reveal');
+  if(!('IntersectionObserver' in window)){
+    // 不支援 IO 直接顯示
+    return;
+  }
+  // 先設初始狀態
+  els.forEach(function(el){ el.style.opacity='0'; el.style.transform='translateY(20px)'; });
+
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        entry.target.style.opacity='1';
+        entry.target.style.transform='translateY(0)';
+        io.unobserve(entry.target);
+      }
+    });
+  },{threshold:0.08,rootMargin:'0px 0px -40px 0px'});
+  els.forEach(function(el){ io.observe(el); });
+
+  // 語言進度條
+  var fills = document.querySelectorAll('.lang-fill');
+  var lo = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        entry.target.style.width = (entry.target.getAttribute('data-width')||0)+'%';
+        lo.unobserve(entry.target);
+      }
+    });
+  },{threshold:0.3});
+  fills.forEach(function(el){ lo.observe(el); });
 })();
 </script>
 </body>
